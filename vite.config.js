@@ -7,11 +7,7 @@ import react from '@vitejs/plugin-react'
 //   plugins: [react()],
 // })
 
-// vite.config.js
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react'; // Or other framework plugin
-
 export default defineConfig({
-  base: '/Tarot-Reading.github.io/', // Replace with your actual repository name
-  plugins: [react()], // Or other framework plugins
-});
+  base: '/Tarot-Reading.github.io/', // must match your repo name exactly
+  plugins: [react()],
+})
