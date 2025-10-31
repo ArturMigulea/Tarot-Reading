@@ -3,16 +3,16 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
-#dist
-dist-ssr
-*.local
 
-# Editor directories and files
+# Build output (Vite)
+dist-ssr
+
+# Editor stuff
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -21,4 +21,3 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
