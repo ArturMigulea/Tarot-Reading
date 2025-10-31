@@ -12,6 +12,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react'; // Or other framework plugin
 
 export default defineConfig({
-  base: '/Tarot-Reading/', // Replace with your actual repository name
+  base: '/Tarot-Reading.github.io/', // Replace with your actual repository name
   plugins: [react()], // Or other framework plugins
 });
