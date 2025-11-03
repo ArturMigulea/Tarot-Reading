@@ -5,23 +5,23 @@ import {
 } from 'react-router-dom'
 
 function App() {
-  // const Home = () => <div><h2>Home Page</h2></div>
-  // const Notes = () => <div><h2>Notes Page</h2></div>
-  // const Users = () => <div><h2>Users Page</h2></div>
-
   return (
     <>
       <Router>
         <div>
-          <Link style={padding} to="/">home</Link>
-          <Link style={padding} to="/notes">notes</Link>
-          <Link style={padding} to="/users">users</Link>
+          <Link to="/">home</Link>
+          <Link to="/Title">title</Link>
+          <Link to="/TypeSelect">users</Link>
+          <Link to="/FateReading">title</Link>
+          <Link to="/LazySusan">users</Link>
         </div>
 
         <Routes>
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/Title" element={<Title />} />
+          <Route path="/TypeSelect" element={<TypeSelect />} />
+          <Route path="/FateReading" element={<FateReading />} />
+          <Route path="/LazySusan" element={<LazySusan />} />
+          <Route path="/" element={<TypeSelect />} />
         </Routes>
       </Router>
     </>
