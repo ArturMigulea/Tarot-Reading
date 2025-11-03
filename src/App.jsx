@@ -13,10 +13,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/Title" element={<Title />} />
-        <Route path="/TypeSelect" element={<TypeSelect />} />
-        <Route path="/FateReading" element={<FateReading />} />
-        <Route path="/LazySusan" element={<LazySusan />} />
+        <Route path="/Screens/Title" element={<Title />} />
+        <Route path="/Screens/TypeSelect" element={<TypeSelect />} />
+        <Route path="/Screens/FateReading" element={<FateReading />} />
+        <Route path="/Screens/LazySusan" element={<LazySusan />} />
       </Routes>
     </Router>
   )
