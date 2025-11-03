@@ -27,9 +27,10 @@ function TypeSelect() {
                 onChange={handleChange} // Call handleChange when the input value changes
             />
 
+            {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
             {/* Either pass 1 card or 3 cards to the next screen */}
-            <button onClick={handleNext(1)}>Next</button>
-            <button onClick={handleNext(3)}>Next</button>
+            <button onClick={() => handleNext(1)}>1 Card Reading</button>
+            <button onClick={() => handleNext(3)}>3 Card Reading</button>
         </div>
     )
 }
