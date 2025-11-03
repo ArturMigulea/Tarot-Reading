@@ -19,18 +19,21 @@ function TypeSelect() {
         <div>
             <h2>This will be where the user chooses either one or 3 cards</h2>
 
-            <label htmlFor="userQuestion">Type In Your Question:</label>
-            <input
-                type="text"
-                id="userQuestion"
-                value={u_Question} // Bind the input's value to the state variable
-                onChange={handleChange} // Call handleChange when the input value changes
-            />
-
-            {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
-            {/* Either pass 1 card or 3 cards to the next screen */}
-            <button onClick={() => handleNext(1)}>1 Card Reading</button>
-            <button onClick={() => handleNext(3)}>3 Card Reading</button>
+            <div>
+                <label htmlFor="userQuestion">Type In Your Question:</label>
+                <input
+                    type="text"
+                    id="userQuestion"
+                    value={u_Question} // Bind the input's value to the state variable
+                    onChange={handleChange} // Call handleChange when the input value changes
+                />
+            </div>
+            <div>
+                {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
+                {/* Either pass 1 card or 3 cards to the next screen */}
+                <button onClick={() => handleNext(1)}>1 Card Reading</button>
+                <button onClick={() => handleNext(3)}>3 Card Reading</button>
+            </div>
         </div>
     )
 }
