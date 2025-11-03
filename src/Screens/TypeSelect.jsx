@@ -1,14 +1,36 @@
 import { useNavigate } from 'react-router-dom'
 
 function TypeSelect() {
-  const navigate = useNavigate()
+    const navigate = useNavigate()
 
-  return (
-    <div>
-      <h2>Select Type</h2>
-      <button onClick={() => navigate('/Screens/FateReading')}>Next</button>
-    </div>
-  )
+    // Set up the pass of parameters to Fate Reading
+    const handleNext = (cardCount) => {
+        navigate('/Screens/FateReading', { state: { question: u_Question, cardAmount: cardCount } });
+    };
+
+    const [u_Question, setInputValue] = useState(''); // Initialize state for the input value
+
+    const handleChange = (event) => {
+        setInputValue(event.target.value); // Update the state with the new input value
+    };
+
+    return (
+        <div>
+            <h2>This will be where the user chooses either one or 3 cards</h2>
+
+            <label htmlFor="userQuestion">Type In Your Question:</label>
+            <input
+                type="text"
+                id="userQuestion"
+                value={u_Question} // Bind the input's value to the state variable
+                onChange={handleChange} // Call handleChange when the input value changes
+            />
+
+            {/* Either pass 1 card or 3 cards to the next screen */}
+            <button onClick={handleNext(1)}>Next</button>
+            <button onClick={handleNext(3)}>Next</button>
+        </div>
+    )
 }
 
 export default TypeSelect
