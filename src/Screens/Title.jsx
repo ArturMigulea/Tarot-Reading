@@ -1,1 +1,7 @@
-export default function Title() {}
+export default function Title() {
+    return (
+        <>
+        Title
+        </>
+    );
+}

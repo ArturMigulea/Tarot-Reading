@@ -1,1 +1,7 @@
-export default function FateReading() {}
+export default function FateReading() {
+    return (
+        <>
+        FateReading
+        </>
+    );
+}

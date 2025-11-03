@@ -1,1 +1,7 @@
-export default function LazySusan() {}
+export default function LazySusan() {
+    return (
+        <>
+        LazySuzan
+        </>
+    );
+}

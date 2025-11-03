@@ -1,1 +1,7 @@
-export default function TypeSelect() {}
+export default function TypeSelect() {
+    return (
+        <>
+        TypeSelect
+        </>
+    );
+}

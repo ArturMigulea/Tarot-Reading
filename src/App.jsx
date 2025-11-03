@@ -9,19 +9,19 @@ function App() {
     <>
       <Router>
         <div>
-          <Link to="/">home</Link>
-          <Link to="/Title">title</Link>
-          <Link to="/TypeSelect">users</Link>
-          <Link to="/FateReading">title</Link>
-          <Link to="/LazySusan">users</Link>
+          <Link to="/Screens/">home</Link>
+          <Link to="/Screens/Title">title</Link>
+          <Link to="/Screens/TypeSelect">users</Link>
+          <Link to="/Screens/FateReading">title</Link>
+          <Link to="/Screens/LazySusan">users</Link>
         </div>
 
         <Routes>
-          <Route path="/Title" element={<Title />} />
-          <Route path="/TypeSelect" element={<TypeSelect />} />
-          <Route path="/FateReading" element={<FateReading />} />
-          <Route path="/LazySusan" element={<LazySusan />} />
-          <Route path="/" element={<TypeSelect />} />
+          <Route path="/Screens/Title" element={<Title />} />
+          <Route path="/Screens/TypeSelect" element={<TypeSelect />} />
+          <Route path="/Screens/FateReading" element={<FateReading />} />
+          <Route path="/Screens/LazySusan" element={<LazySusan />} />
+          <Route path="/Screens/" element={<TypeSelect />} />
         </Routes>
       </Router>
     </>
