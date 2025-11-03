@@ -6,7 +6,7 @@ function Title() {
   return (
     <div>
       <h1>Welcome to the App</h1>
-        <button onClick={() => navigate('/TypeSelect')}>Type Select</button>
+        <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
     </div>
   )
 }
