@@ -6,7 +6,7 @@ import {
 
 // Importing the different screens
 import Title from './Screens/Title'
-// import TypeSelect from './Screens/TypeSelect'
+import TypeSelect from './Screens/TypeSelect'
 // import FateReading from './Screens/FateReading'
 // import LazySusan from './Screens/LazySusan'
 
