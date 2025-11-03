@@ -11,7 +11,7 @@ import LazySusan from './Screens/LazySusan'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Tarot-Reading">
       <Routes>
         <Route path="/" element={<Title />} />
         <Route path="/Screens/TypeSelect" element={<TypeSelect />} />
