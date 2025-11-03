@@ -4,6 +4,11 @@ import {
   Routes, Route, Link
 } from 'react-router-dom'
 
+import Title from './Screens/Title'
+import TypeSelect from './Screens/TypeSelect'
+import FateReading from './Screens/FateReading'
+import LazySusan from './Screens/LazySusan'
+
 function App() {
   return (
     <>
