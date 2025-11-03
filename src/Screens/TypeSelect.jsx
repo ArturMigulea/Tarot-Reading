@@ -6,7 +6,7 @@ function TypeSelect() {
   return (
     <div>
       <h2>Select Type</h2>
-      <button onClick={() => navigate('/FateReading')}>Next</button>
+      <button onClick={() => navigate('/Screens/FateReading')}>Next</button>
     </div>
   )
 }

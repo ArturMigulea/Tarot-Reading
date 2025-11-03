@@ -7,7 +7,7 @@ function LazySusan() {
     <div>
         <h2>Lazy Susan</h2>
         <p>Spinny card thing here</p>
-        <button onClick={() => navigate('/TypeSelect')}>Type Select</button>
+        <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
     </div>
   )
 }
