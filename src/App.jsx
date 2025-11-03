@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/Screens/Title" element={<Title />} />
+        <Route path="/" element={<Title />} />
         <Route path="/Screens/TypeSelect" element={<TypeSelect />} />
         <Route path="/Screens/FateReading" element={<FateReading />} />
         <Route path="/Screens/LazySusan" element={<LazySusan />} />
