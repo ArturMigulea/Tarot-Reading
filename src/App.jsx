@@ -17,9 +17,9 @@ function App() {
       {/* The different Screens */}
       <Routes>
         <Route path="/" element={<Title />} />
-        {/* <Route path="/Screens/TypeSelect" element={<TypeSelect />} />
-        <Route path="/Screens/FateReading" element={<FateReading />} />
-        <Route path="/Screens/LazySusan" element={<LazySusan />} /> */}
+        <Route path="/Screens/TypeSelect" element={<TypeSelect />} />
+        {/* <Route path="/Screens/FateReading" element={<FateReading />} /> */}
+        {/* <Route path="/Screens/LazySusan" element={<LazySusan />} /> */}
       </Routes>
     </Router>
   )
