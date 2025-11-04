@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 function TypeSelect() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     // Set up the pass of parameters to Fate Reading
     const handleNext = (cardCount) => {

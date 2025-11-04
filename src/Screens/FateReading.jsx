@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 
 function FateReading() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     
     const location = useLocation();
     const { question, cardAmount } = location.state || {}; // safely extract the passed data
