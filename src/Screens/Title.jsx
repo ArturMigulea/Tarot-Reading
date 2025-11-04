@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 function Title() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <div>
