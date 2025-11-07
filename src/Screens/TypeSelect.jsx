@@ -17,7 +17,7 @@ function TypeSelect() {
 
     return (
         <div>
-            <h2>This will be where the user chooses either one or 3 cards</h2>
+            <p>This will be where the user chooses either one or 3 cards</p>
 
             <div>
                 <label htmlFor="userQuestion">Type In Your Question:</label>

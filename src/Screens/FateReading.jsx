@@ -36,19 +36,19 @@ function FateReading() {
 
     return (
         <div>
-            <h2>Fate Reading</h2>
+            <h1>Fate Reading</h1>
 
             <div>
-                <h2>Your Question:</h2>
+                <p>Your Question:</p>
                 <p>{question || 'No question provided.'}</p>
             </div>
             <div>
-                <h2>Card Amount:</h2>
+                <p>Card Amount:</p>
                 <p>{cardAmount || 'No amount provided.'}</p>
             </div>
 
             <div>
-                <h2>Drawn Cards:</h2>
+                <p>Drawn Cards:</p>
                 <div className="cards-container">
                     {randomCards.map((shortName, idx) => (
                     <img
