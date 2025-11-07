@@ -5,7 +5,8 @@ function Title() {
 
     return (
         <div>
-            <h1>Display the Gypsy lady here</h1>
+            <h1>This is the front page</h1>
+            <p>Display the Gypsy lady here</p>
             <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
         </div>
     )
