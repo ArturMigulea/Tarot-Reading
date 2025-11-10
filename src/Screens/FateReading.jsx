@@ -68,8 +68,6 @@ function FateReading() {
     fetchCards()
     }, [])
 
-    console.log(shortNames);
-
     return (
         <div>
             <h1>Fate Reading</h1>
@@ -84,7 +82,7 @@ function FateReading() {
             </div>
 
             <div>
-                <p>Drawn Cards:</p>
+                {/* <p>Drawn Cards:</p>
                 <div className="cards-container">
                     {randomCards.map((shortName, idx) => (
                     <img
@@ -95,22 +93,27 @@ function FateReading() {
                     />
                 ))}
             </div>
-
-            <ParchmentCard title="Ancient Wisdom">
-                <p>
-                    Within these faded lines lie whispers of forgotten ages. 
-                    The truth endures, etched upon the parchment of time.
-                </p>
-                <p>
-                    Seek knowledge with humility — for the scroll remembers all.
-                </p>
-            </ParchmentCard>
             
             {data && data.cards && data.cards.map((card, i) => (
-            <p key={i}>{card.name}</p>
+                <p key={i}>{card.name}</p>
+            ))} */}
+
+            {randomCards.map((shortName, idx, name, suit, desc) => (
+                <div>
+                    <img
+                        key={idx}
+                        src={cardImages[shortName]}
+                        alt={shortName}
+                        className="card-image"
+                    />
+                    <ParchmentCard title={name}>
+                        <p>{ suit }</p>
+                        <p>{ desc }</p>
+                    </ParchmentCard>
+                </div>
             ))}
 
-        </div>
+            </div>
             <button onClick={() => navigate('/Screens/LazySusan')}>Next</button>
             <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
         </div>
