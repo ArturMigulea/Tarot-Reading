@@ -5,7 +5,7 @@ import './FateReading.css';
 function ParchmentCard({ title, children }) {
   return (
     <div className="parchment-card">
-      <h3 className="parchment-card__title">{title}</h3>
+      <h1 className="parchment-card__title">{title}</h1>
       <div className="parchment-card__content">{children}</div>
     </div>
   );
@@ -67,6 +67,8 @@ function FateReading() {
 
     fetchCards()
     }, [])
+
+    console.log(shortNames);
 
     return (
         <div>
