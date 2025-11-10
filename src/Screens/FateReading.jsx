@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react';
 import './FateReading.css';
 
 function FateReading() {
@@ -6,7 +7,10 @@ function FateReading() {
     
     const location = useLocation();
     const { question, cardAmount } = location.state || {}; // safely extract the passed data
-    //const [card, setCard] = useState(null);
+
+    const [data, setData] = useState(null); //data for a specific card
+    const [error, setError] = useState(null); //store error message (state is either error message or no error message)
+    const [randomCards, setRandomCards] = useState([]);
 
     //from "/public/Cards[all of the jpg files]" select cardAmount random cards
     const shortNames = [
@@ -24,15 +28,39 @@ function FateReading() {
         cardImages[name] = `/Tarot-Reading/Cards/${name}.jpg`
     });
 
-    const getRandomCards = (cardAmount) => {
-        return [...shortNames].sort(() => Math.random() - 0.5).slice(0, cardAmount);
-        //[...allCards] → creates a copy so we don’t mutate the original array.
-        // .sort(() => Math.random() - 0.5) → shuffles the array randomly.
-        // .slice(0, cardAmount) → picks the first cardAmount cards from the shuffled array.
+    useEffect(() => {
+    const getRandomCards = (cardAmount) => { 
+        return [...shortNames].sort(() => Math.random() - 0.5).slice(0, cardAmount)
     }
 
-    const randomCards = getRandomCards(cardAmount)
-    console.log("random cards drawn: ", randomCards) //shows 2 sets of cards?? something about React's Strict Mode
+    const drawn = getRandomCards(cardAmount) //setting variable and setting is s the state variable
+    setRandomCards(drawn)
+    console.log("random cards drawn: ", drawn)
+
+    const fetchCards = async () => {
+        try {
+        const res = await fetch("https://tarotapi.dev/api/v1/cards") //fetch all the card data
+        if (!res.ok) throw new Error("Failed to fetch cards")
+        const allCards = await res.json()
+
+        const results = drawn.map(name => { //.map to go through all 3 cards if there's 3
+            const found = allCards.cards.find(c => c.name_short === name)
+            if (!found) throw new Error(`Card ${name} not found`)
+            return found
+        })
+
+        setData({ cards: results })
+        setError(null)
+        console.log("Fetched results:", results)
+        } catch (err) {
+        setData(null)
+        setError(err.message)
+        console.log(err.message)
+        }
+    }
+
+    fetchCards()
+    }, [])
 
     return (
         <div>
@@ -60,6 +88,10 @@ function FateReading() {
                 ))}
             </div>
             
+            {data && data.cards && data.cards.map((card, i) => (
+            <p key={i}>{card.name}</p>
+            ))}
+
         </div>
             <button onClick={() => navigate('/Screens/LazySusan')}>Next</button>
             <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
