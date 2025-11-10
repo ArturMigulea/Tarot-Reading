@@ -9,7 +9,6 @@ function FateReading() {
     const { question, cardAmount } = location.state || {}; // safely extract the passed data
 
     const [data, setData] = useState(null); //data for a specific card
-    const [error, setError] = useState(null); //store error message (state is either error message or no error message)
     const [randomCards, setRandomCards] = useState([]);
 
     //from "/public/Cards[all of the jpg files]" select cardAmount random cards
@@ -50,11 +49,9 @@ function FateReading() {
         })
 
         setData({ cards: results })
-        setError(null)
         console.log("Fetched results:", results)
         } catch (err) {
         setData(null)
-        setError(err.message)
         console.log(err.message)
         }
     }
