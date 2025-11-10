@@ -1,8 +1,5 @@
 import './styles.css'
-import {
-  BrowserRouter as Router,
-  Routes, Route
-} from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 
 // Importing the different screens
 import Title from './Screens/Title'
@@ -12,8 +9,8 @@ import LazySusan from './Screens/LazySusan'
 
 function App() {
 	return (
-		// Screen Router for app navigation. Sets root URL as Github project name "Tarot-Reading"
-		<Router basename="/Tarot-Reading">
+		// Screen Router for app navigation. Sets root URL as Github project name
+		<Router basename="/">
 			{/* Connecting the screens to the navigation. This is required for the app to see the paths*/}
 			<Routes>
 				{/* Default Home page will be Title Page */}
