@@ -2,6 +2,15 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import './FateReading.css';
 
+function ParchmentCard({ title, children }) {
+  return (
+    <div className="parchment-card">
+      <h3 className="parchment-card__title">{title}</h3>
+      <div className="parchment-card__content">{children}</div>
+    </div>
+  );
+}
+
 function FateReading() {
     const navigate = useNavigate();
     
@@ -30,7 +39,7 @@ function FateReading() {
     useEffect(() => {
     const getRandomCards = (cardAmount) => { 
         return [...shortNames].sort(() => Math.random() - 0.5).slice(0, cardAmount)
-    }
+    } 
 
     const drawn = getRandomCards(cardAmount) //setting variable and setting is s the state variable
     setRandomCards(drawn)
@@ -84,6 +93,16 @@ function FateReading() {
                     />
                 ))}
             </div>
+
+            <ParchmentCard title="Ancient Wisdom">
+                <p>
+                    Within these faded lines lie whispers of forgotten ages. 
+                    The truth endures, etched upon the parchment of time.
+                </p>
+                <p>
+                    Seek knowledge with humility — for the scroll remembers all.
+                </p>
+            </ParchmentCard>
             
             {data && data.cards && data.cards.map((card, i) => (
             <p key={i}>{card.name}</p>
