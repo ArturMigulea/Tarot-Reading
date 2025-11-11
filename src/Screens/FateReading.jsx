@@ -114,7 +114,7 @@ function FateReading() {
                     return (
                         <div key={shortName} className="cards-row">
                         <img
-                            src={cardImages[card.shortName]}
+                            src={cardImages[shortName]}
                             alt={card.name}
                             className="card-image"
                         />
