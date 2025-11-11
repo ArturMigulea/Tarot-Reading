@@ -55,13 +55,13 @@ function FateReading() {
                     const found = allCards.cards.find(c => c.name_short === name)
                     if (!found) throw new Error(`Card ${name} not found`)
                     
-                    const name = found.name;
+                    const name_long = found.name;
                     const suit = found.suit;
                     const desc = found.desc;
 
                     return {
                         name_short,
-                        name,
+                        name_long,
                         suit,
                         desc,
                         image: cardImages[sn],
@@ -117,7 +117,7 @@ function FateReading() {
                         alt={card.name_short}
                         className="card-image"
                     />
-                    <ParchmentCard title={card.name}>
+                    <ParchmentCard title={card.name_long}>
                         <p>{ card.suit }</p>
                         <p>{ card.desc }</p>
                     </ParchmentCard>
