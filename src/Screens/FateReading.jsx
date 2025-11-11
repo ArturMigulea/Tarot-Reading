@@ -114,10 +114,10 @@ function FateReading() {
             ))} */}
 
             {randomCards.map((card) => (
-                <div key={card.shortName}>
+                <div key={card.sn}>
                     <img
-                        src={card.image}
-                        alt={card.shortName}
+                        src={cardImages[card.sn]}
+                        alt={card.sn}
                         className="card-image"
                     />
                     <ParchmentCard title={card.name}>
