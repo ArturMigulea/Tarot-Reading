@@ -37,46 +37,35 @@ function FateReading() {
     });
 
     useEffect(() => {
-        const getRandomCards = (cardAmount) => { 
-            return [...shortNames].sort(() => Math.random() - 0.5).slice(0, cardAmount)
-        } 
+    const getRandomCards = (cardAmount) => { 
+        return [...shortNames].sort(() => Math.random() - 0.5).slice(0, cardAmount)
+    } 
 
-        const drawn = getRandomCards(cardAmount) //setting variable and setting is s the state variable
-        setRandomCards(drawn)
-        console.log("random cards drawn: ", drawn)
+    const drawn = getRandomCards(cardAmount) //setting variable and setting is s the state variable
+    setRandomCards(drawn)
+    console.log("random cards drawn: ", drawn)
 
-        const fetchCards = async () => {
-            try {
-                const res = await fetch("https://tarotapi.dev/api/v1/cards") //fetch all the card data
-                if (!res.ok) throw new Error("Failed to fetch cards")
-                const allCards = await res.json()
+    const fetchCards = async () => {
+        try {
+            const res = await fetch("https://tarotapi.dev/api/v1/cards") //fetch all the card data
+            if (!res.ok) throw new Error("Failed to fetch cards")
+            const allCards = await res.json()
 
-                const results = drawn.map(name => { //.map to go through all 3 cards if there's 3
-                    const found = allCards.cards.find(c => c.name_short === name)
-                    if (!found) throw new Error(`Card ${name} not found`)
-                    
-                    const name_long = found.name;
-                    const suit = found.suit;
-                    const desc = found.desc;
+            const results = drawn.map(name => { //.map to go through all 3 cards if there's 3
+                const found = allCards.cards.find(c => c.name_short === name)
+                if (!found) throw new Error(`Card ${name} not found`)
+                return found
+            })
 
-                    return {
-                        name_short,
-                        name_long,
-                        suit,
-                        desc,
-                        image: cardImages[sn],
-                    };
-                })
-
-                setData({ cards: results })
-                console.log("Fetched results:", results)
-            } catch (err) {
-                setData(null)
-                console.log(err.message)
-            }
+            setData({ cards: results })
+            console.log("Fetched results:", results)
+        } catch (err) {
+            setData(null)
+            console.log(err.message)
         }
+    }
 
-        fetchCards()
+    fetchCards()
     }, [])
 
     return (
@@ -109,22 +98,28 @@ function FateReading() {
                 <p key={i}>{card.name}</p>
             ))} */}
 
-            {randomCards.map((card) => (
-                <div >
-                    <img
-                        key={card.name_short}
-                        src={cardImages[card.name_short]}
-                        alt={card.name_short}
-                        className="card-image"
-                    />
-                    <ParchmentCard title={card.name_long}>
-                        <p>{ card.suit }</p>
-                        <p>{ card.desc }</p>
-                    </ParchmentCard>
-                </div>
-            ))}
+                {randomCards.map((shortName, idx) => {
+                    const card = data?.cards?.find(c => c.name_short === shortName);
+                    const name = card?.name || shortName;
+                    const suit = card?.suit || '';
+                    const desc = card?.desc || '';
 
-            </div>
+                    return (
+                        <div key={shortName} className="cards-row">
+                        <img
+                            src={cardImages[shortName]}
+                            alt={name}
+                            className="card-image"
+                        />
+                        <ParchmentCard title={name}>
+                            {suit && <p>{suit}</p>}
+                            {desc && <p>{desc}</p>}
+                        </ParchmentCard>
+                        </div>
+                    );
+                })}
+
+                </div>
             <button onClick={() => navigate('/Screens/LazySusan')}>Next</button>
             <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
         </div>
