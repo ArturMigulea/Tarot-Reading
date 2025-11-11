@@ -96,7 +96,6 @@ function FateReading() {
                             className="card-image"
                         />
                         <ParchmentCard title={name}>
-                            {suit}
                             {desc}
                         </ParchmentCard>
                         </div>
