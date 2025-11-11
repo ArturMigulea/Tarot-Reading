@@ -37,35 +37,50 @@ function FateReading() {
     });
 
     useEffect(() => {
-    const getRandomCards = (cardAmount) => { 
-        return [...shortNames].sort(() => Math.random() - 0.5).slice(0, cardAmount)
-    } 
+        const getRandomCards = (cardAmount) => { 
+            return [...shortNames].sort(() => Math.random() - 0.5).slice(0, cardAmount)
+        } 
 
-    const drawn = getRandomCards(cardAmount) //setting variable and setting is s the state variable
-    setRandomCards(drawn)
-    console.log("random cards drawn: ", drawn)
+        const drawn = getRandomCards(cardAmount) //setting variable and setting is s the state variable
+        setRandomCards(drawn)
+        console.log("random cards drawn: ", drawn)
 
-    const fetchCards = async () => {
-        try {
-        const res = await fetch("https://tarotapi.dev/api/v1/cards") //fetch all the card data
-        if (!res.ok) throw new Error("Failed to fetch cards")
-        const allCards = await res.json()
+        const fetchCards = async () => {
+            try {
+                const res = await fetch("https://tarotapi.dev/api/v1/cards") //fetch all the card data
+                if (!res.ok) throw new Error("Failed to fetch cards")
+                const allCards = await res.json()
 
-        const results = drawn.map(name => { //.map to go through all 3 cards if there's 3
-            const found = allCards.cards.find(c => c.name_short === name)
-            if (!found) throw new Error(`Card ${name} not found`)
-            return found
-        })
+                const results = drawn.map(name => { //.map to go through all 3 cards if there's 3
+                    const found = allCards.cards.find(c => c.name_short === name)
+                    if (!found) throw new Error(`Card ${name} not found`)
+                    // return found
+                    const name = found.name || sn;
+                    const suit = found.suit || found.type || '';
+                    const desc =
+                        found.desc ||
+                        found.meaning_up ||
+                        (found.meanings && (found.meanings.light || found.meanings.upright)) ||
+                        '';
 
-        setData({ cards: results })
-        console.log("Fetched results:", results)
-        } catch (err) {
-        setData(null)
-        console.log(err.message)
+                    return {
+                        shortName: sn,
+                        name,
+                        suit,
+                        desc,
+                        image: cardImages[sn],
+                    };
+                })
+
+                setData({ cards: results })
+                console.log("Fetched results:", results)
+            } catch (err) {
+                setData(null)
+                console.log(err.message)
+            }
         }
-    }
 
-    fetchCards()
+        fetchCards()
     }, [])
 
     return (
@@ -98,17 +113,16 @@ function FateReading() {
                 <p key={i}>{card.name}</p>
             ))} */}
 
-            {randomCards.map((shortName, idx, name, suit, desc) => (
-                <div>
+            {randomCards.map((card) => (
+                <div key={card.shortName}>
                     <img
-                        key={idx}
-                        src={cardImages[shortName]}
-                        alt={shortName}
+                        src={card.image}
+                        alt={card.shortName}
                         className="card-image"
                     />
-                    <ParchmentCard title={name}>
-                        <p>{ suit }</p>
-                        <p>{ desc }</p>
+                    <ParchmentCard title={card.name}>
+                        <p>{ card.suit }</p>
+                        <p>{ card.desc }</p>
                     </ParchmentCard>
                 </div>
             ))}
