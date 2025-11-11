@@ -2,11 +2,21 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import './FateReading.css';
 
+// function ParchmentCard({ title, children }) {
+//   return (
+//     <div className="parchment-card">
+//       <h1 className="parchment-card__title">{title}</h1>
+//       <div className="parchment-card__content">{children}</div>
+//     </div>
+//   );
+// }
+
+
 function ParchmentCard({ title, children }) {
   return (
     <div className="parchment-card">
-      <h1 className="parchment-card__title">{title}</h1>
-      <div className="parchment-card__content">{children}</div>
+      <h1>{ title }</h1>
+      <p>{ children }</p>
     </div>
   );
 }
@@ -112,8 +122,8 @@ function FateReading() {
                             className="card-image"
                         />
                         <ParchmentCard title={name}>
-                            {suit && <p>{suit}</p>}
-                            {desc && <p>{desc}</p>}
+                            {suit}
+                            {desc}
                         </ParchmentCard>
                         </div>
                     );
