@@ -54,17 +54,13 @@ function FateReading() {
                 const results = drawn.map(name => { //.map to go through all 3 cards if there's 3
                     const found = allCards.cards.find(c => c.name_short === name)
                     if (!found) throw new Error(`Card ${name} not found`)
-                    // return found
-                    const name = found.name || sn;
-                    const suit = found.suit || found.type || '';
-                    const desc =
-                        found.desc ||
-                        found.meaning_up ||
-                        (found.meanings && (found.meanings.light || found.meanings.upright)) ||
-                        '';
+                    
+                    const name = found.name;
+                    const suit = found.suit;
+                    const desc = found.desc;
 
                     return {
-                        shortName: sn,
+                        name_short,
                         name,
                         suit,
                         desc,
@@ -114,10 +110,11 @@ function FateReading() {
             ))} */}
 
             {randomCards.map((card) => (
-                <div key={card.sn}>
+                <div >
                     <img
-                        src={cardImages[card.sn]}
-                        alt={card.sn}
+                        key={card.name_short}
+                        src={cardImages[card.name_short]}
+                        alt={card.name_short}
                         className="card-image"
                     />
                     <ParchmentCard title={card.name}>
