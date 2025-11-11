@@ -110,20 +110,17 @@ function FateReading() {
 
                 {randomCards.map((shortName) => {
                     const card = data?.cards?.find(c => c.name_short === shortName);
-                    const name = card?.name || shortName;
-                    const suit = card?.suit || '';
-                    const desc = card?.desc || '';
 
                     return (
                         <div key={shortName} className="cards-row">
                         <img
-                            src={cardImages[shortName]}
-                            alt={name}
+                            src={cardImages[card.shortName]}
+                            alt={card.name}
                             className="card-image"
                         />
-                        <ParchmentCard title={name}>
-                            {suit}
-                            {desc}
+                        <ParchmentCard title={card.name}>
+                            {card.suit}
+                            {card.desc}
                         </ParchmentCard>
                         </div>
                     );
