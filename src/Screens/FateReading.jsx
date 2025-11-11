@@ -82,26 +82,10 @@ function FateReading() {
             </div>
 
             <div>
-                {/* <p>Drawn Cards:</p>
-                <div className="cards-container">
-                    {randomCards.map((shortName, idx) => (
-                    <img
-                        key={idx}
-                        src={cardImages[shortName]}
-                        alt={shortName}
-                        className="card-image"
-                    />
-                ))}
-            </div>
-            
-            {data && data.cards && data.cards.map((card, i) => (
-                <p key={i}>{card.name}</p>
-            ))} */}
 
                 {randomCards.map((shortName) => {
                     const card = data?.cards?.find(c => c.name_short === shortName);
                     const name = card?.name || shortName;
-                    const suit = card?.suit || '';
                     const desc = card?.desc || '';
 
                     return (
