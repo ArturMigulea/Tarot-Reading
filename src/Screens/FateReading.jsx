@@ -98,7 +98,7 @@ function FateReading() {
                 <p key={i}>{card.name}</p>
             ))} */}
 
-                {randomCards.map((shortName, idx) => {
+                {randomCards.map((shortName) => {
                     const card = data?.cards?.find(c => c.name_short === shortName);
                     const name = card?.name || shortName;
                     const suit = card?.suit || '';
