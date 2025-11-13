@@ -27,6 +27,7 @@ body {
   background-color: var(--bg-body);
   color: var(--text-colour-primary);
   padding: 0;
+  margin: 0;
   overflow: auto; /* was: hidden */
   -webkit-tap-highlight-color: transparent;
 }
@@ -59,8 +60,8 @@ p {
 }
 
 .bg-img {
-  width: 100vw;   /* 100% of viewport width */
-  height: 100vh;  /* 100% of viewport height */
+  width: 100%;   /* 100% of viewport width */
+  height: 100%;  /* 100% of viewport height */
   background-size: cover;      /* fill the screen */
   background-position: center; /* center image */
   background-repeat: no-repeat;
