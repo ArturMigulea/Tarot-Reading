@@ -7,8 +7,8 @@ import './FateReading.css';
 function ParchmentCard({ title, children }) {
   return (
     <div className="parchment-card">
-      <h1>{ title }</h1>
-      <p>{ children }</p>
+        {title && <h1>{title}</h1>}
+       <p>{ children }</p>
     </div>
   );
 }
