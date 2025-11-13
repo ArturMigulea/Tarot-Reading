@@ -98,10 +98,9 @@ function FateReading() {
                             </div>
                         );
                     })}
-                </div>
+                {/* </div>
 
-                {/* Bottom row: parchment info */}
-                <div className="info-row">
+                <div className="info-row"> */}
                     {randomCards.map((shortName) => {
                         const card = data?.cards?.find(c => c.name_short === shortName);
                         const name = card?.name || shortName;
