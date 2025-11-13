@@ -10,21 +10,17 @@
   width: 100%;
 }
 
-.card-row,
-.info-row {
+.card-row, .info-row {
   display: flex;
-  justify-content: center;  /* center the group of cards */
-  flex-wrap: wrap;          /* allow wrapping on smaller screens */
-  gap: 24px;                /* spacing *between* cards */
+  justify-content: space-around;
+  gap: 15px;
   width: 100%;
 }
 
-/* Let cards size to their content instead of stretching across the row */
-.card-col,
-.info-col {
+.card-col, .info-col {
+  flex: 1 1 0;
   display: flex;
   justify-content: center;
-  flex: 0 0 auto;           /* or just leave flex off entirely */
 }
 
 /* Card image fills its column */
