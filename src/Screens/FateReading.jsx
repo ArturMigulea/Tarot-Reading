@@ -174,15 +174,25 @@ function FateReading() {
 
             {/* Button to go from first layout → second layout */}
             {view === "grid" && (
-            <button onClick={() => setView("detail")}>
-                Next
-            </button>
+                <div className="reading-actions">
+                    <button
+                        className="action-btn"
+                        onClick={() => setView("detail")}
+                    >
+                        Next
+                    </button>
+
+                    <div className="action-divider" />
+
+                    <button
+                        className="action-btn"
+                        onClick={() => navigate('/Screens/TypeSelect')}
+                    >
+                        Another Reading?
+                    </button>
+                </div>
             )}
 
-            {/* Keep your other nav button if you want */}
-            <button onClick={() => navigate('/Screens/TypeSelect')}>
-            Type Select
-            </button>
         </div>
     );
 
