@@ -7,16 +7,18 @@ function Title() {
 
     return (
         <div className='ScreenContainer gypsy-bg-img bg-img'>
-            <h1>Ready to read your fate?</h1>
+            <div style={{ marginTop: "20%", display: "flex", justifyContent: "center" }}>
+                <h1>Ready to read your fate?</h1>
 
-            <MultiUseButton
-                buttons={[
-                    {
-                        label: "Type Select",
-                        onClick: () => navigate('/Screens/TypeSelect')
-                    }
-                ]}
-            />
+                <MultiUseButton
+                    buttons={[
+                        {
+                            label: "Type Select",
+                            onClick: () => navigate('/Screens/TypeSelect')
+                        }
+                    ]}
+                />
+            </div>
         </div>
     )
 }
