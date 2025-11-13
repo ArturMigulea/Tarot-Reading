@@ -2,21 +2,22 @@
 .reading-grid {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   gap: 20px;
-  width: 100vw;
+  width: 100%;
 }
 
 /* Top row: cards */
 .card-row {
   display: flex;
-  justify-content: space-between;  /* spread across full width */
-  gap: 20px;
+  justify-content: space-around;
+  gap: 15px;
   width: 100%;
 }
 
 .card-col {
   flex: 1 1 0;
+  display: flex;
+  justify-content: center;
 }
 
 /* Bottom row: parchments */
@@ -33,9 +34,9 @@
 
 /* Card image fills its column */
 .card-image {
-  width: 100%;         /* takes full column width */
+  width: 100%;
+  max-width: 200px; /* optional, remove if you want full stretch */
   height: auto;
-  display: block;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
