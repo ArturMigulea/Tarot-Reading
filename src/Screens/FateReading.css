@@ -4,6 +4,7 @@
 .reading-grid {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
   width: 100%;
 }
@@ -18,8 +19,6 @@
 
 .card-col {
   flex: 1 1 0;
-  display: flex;
-  justify-content: center;
 }
 
 /* Bottom row: parchments */
