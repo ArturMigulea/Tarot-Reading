@@ -10,17 +10,21 @@
   width: 100%;
 }
 
-.card-row, .info-row {
+.card-row,
+.info-row {
   display: flex;
-  justify-content: space-around;
-  gap: 15px;
+  justify-content: center;  /* center the group of cards */
+  flex-wrap: wrap;          /* allow wrapping on smaller screens */
+  gap: 24px;                /* spacing *between* cards */
   width: 100%;
 }
 
-.card-col, .info-col {
-  flex: 1 1 0;
+/* Let cards size to their content instead of stretching across the row */
+.card-col,
+.info-col {
   display: flex;
   justify-content: center;
+  flex: 0 0 auto;           /* or just leave flex off entirely */
 }
 
 /* Card image fills its column */
@@ -95,7 +99,6 @@
 
   align-items: center;
   justify-content: space-between;
-  /* gap: 80px; */
 }
 
 /* cards stacked vertically */
