@@ -92,7 +92,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding: 40px 80px; */
   box-sizing: border-box;
 }
 
@@ -101,7 +100,7 @@
   width: 80%;
   align-items: center;
   justify-content: space-between;
-  gap: 80px;
+  /* gap: 80px; */
 }
 
 /* cards stacked vertically */
