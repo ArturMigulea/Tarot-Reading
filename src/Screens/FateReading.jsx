@@ -119,6 +119,27 @@ function FateReading() {
                     );
                 })}
                 </div>
+                
+                {/* Button to go from first layout → second layout */}
+                {view === "grid" && (
+                    <div className="reading-actions">
+                        <button
+                            className="action-btn"
+                            onClick={() => setView("detail")}
+                        >
+                            Next
+                        </button>
+
+                        <div className="action-divider" />
+
+                        <button
+                            className="action-btn"
+                            onClick={() => navigate('/Screens/TypeSelect')}
+                        >
+                            Another Reading?
+                        </button>
+                    </div>
+                )}
             </div>
             )}
 
@@ -143,7 +164,7 @@ function FateReading() {
                     </div>
 
                     <div className="question-column">
-                        <ParchmentCard title="[ User's Question ]">
+                        <ParchmentCard title={question || 'No question provided.'}>
                         {question || `
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -171,28 +192,6 @@ function FateReading() {
                 </div>
             </div>
             )}
-
-            {/* Button to go from first layout → second layout */}
-            {view === "grid" && (
-                <div className="reading-actions">
-                    <button
-                        className="action-btn"
-                        onClick={() => setView("detail")}
-                    >
-                        Next
-                    </button>
-
-                    <div className="action-divider" />
-
-                    <button
-                        className="action-btn"
-                        onClick={() => navigate('/Screens/TypeSelect')}
-                    >
-                        Another Reading?
-                    </button>
-                </div>
-            )}
-
         </div>
     );
 
