@@ -18,7 +18,7 @@ function TypeSelect() {
     };
 
     return (
-        <div className='ScreenContainer'>
+        <div className='ScreenContainer crystalBall-bg-img bg-img'>
             <p>This will be where the user chooses either one or 3 cards</p>
 
             <div>

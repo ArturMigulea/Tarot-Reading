@@ -6,7 +6,7 @@ function LazySusan() {
     const navigate = useNavigate()
 
     return (
-        <div className='ScreenContainer'>
+        <div className='ScreenContainer crystalBall-bg-img bg-img'>
             <h2>Lazy Susan</h2>
             <p>Spinny card thing here</p>
 
