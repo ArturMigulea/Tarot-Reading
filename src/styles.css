@@ -61,7 +61,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);  /* darkness */
+  background-color: rgba(0, 0, 0, 0.7);  /* darkness */
   pointer-events: none;                  /* <— key: doesn’t block clicks */
   z-index: 0;
 }
