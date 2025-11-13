@@ -6,11 +6,9 @@ function Title() {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <div className='ScreenContainer'>
             <h1>This is the front page</h1>
             <p>Display the Gypsy lady here</p>
-            
-            {/* <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button> */}
 
             <MultiUseButton
                 buttons={[

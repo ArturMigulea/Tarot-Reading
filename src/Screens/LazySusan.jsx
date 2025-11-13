@@ -6,10 +6,9 @@ function LazySusan() {
     const navigate = useNavigate()
 
     return (
-        <div>
+        <div className='ScreenContainer'>
             <h2>Lazy Susan</h2>
             <p>Spinny card thing here</p>
-            {/* <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button> */}
 
             <MultiUseButton
                 buttons={[

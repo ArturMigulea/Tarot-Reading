@@ -18,7 +18,7 @@ function TypeSelect() {
     };
 
     return (
-        <div>
+        <div className='ScreenContainer'>
             <p>This will be where the user chooses either one or 3 cards</p>
 
             <div>
@@ -33,9 +33,6 @@ function TypeSelect() {
             <div>
                 {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
                 {/* Either pass 1 card or 3 cards to the next screen */}
-
-                {/* <button onClick={() => handleNext(1)}>1 Card Reading</button>
-                <button onClick={() => handleNext(3)}>3 Card Reading</button> */}
 
                 <MultiUseButton
                     buttons={[
