@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import ReadingActions from "../Components/ReadingActions";
 import './FateReading.css';
 
 function ParchmentCard({ title, children }) {
@@ -122,23 +123,35 @@ function FateReading() {
                 
                 {/* Button to go from first layout → second layout */}
                 {view === "grid" && (
-                    <div className="reading-actions">
-                        <button
-                            className="action-btn"
-                            onClick={() => setView("detail")}
-                        >
-                            Next
-                        </button>
+                    // <div className="reading-actions">
+                    //     <button
+                    //         className="action-btn"
+                    //         onClick={() => setView("detail")}
+                    //     >
+                    //         Next
+                    //     </button>
 
-                        <div className="action-divider" />
+                    //     <div className="action-divider" />
 
-                        <button
-                            className="action-btn"
-                            onClick={() => navigate('/Screens/TypeSelect')}
-                        >
-                            Another Reading?
-                        </button>
-                    </div>
+                    //     <button
+                    //         className="action-btn"
+                    //         onClick={() => navigate('/Screens/TypeSelect')}
+                    //     >
+                    //         Another Reading?
+                    //     </button>
+                    // </div>
+                    <ReadingActions
+                        buttons={[
+                            {
+                                label: "Next",
+                                onClick: () => setView("detail")
+                            },
+                            {
+                                label: "Another Reading?",
+                                onClick: () => navigate('/Screens/TypeSelect')
+                            }
+                        ]}
+                    />
                 )}
             </div>
             )}
@@ -173,7 +186,7 @@ function FateReading() {
                     </div>
                 </div>
 
-                <div className="reading-actions">
+                {/* <div className="reading-actions">
                     <button
                         className="action-btn"
                         onClick={() => setView("grid")}
@@ -189,7 +202,19 @@ function FateReading() {
                     >
                         Consult the full deck
                     </button>
-                </div>
+                </div> */}
+                <ReadingActions
+                    buttons={[
+                        {
+                            label: "Back to card spread",
+                            onClick: () => setView("grid")
+                        },
+                        {
+                            label: "Consult the full deck",
+                            onClick: () => navigate('/Screens/LazySusan')
+                        }
+                    ]}
+                />
             </div>
             )}
         </div>
