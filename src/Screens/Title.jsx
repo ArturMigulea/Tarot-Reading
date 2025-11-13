@@ -6,18 +6,19 @@ function Title() {
     const navigate = useNavigate();
 
     return (
-        <div className='ScreenContainer gypsy-bg-img bg-img' style={{ marginTop: "40%" }}>
-            <h1>Ready to read your fate?</h1>
+        <div className='ScreenContainer gypsy-bg-img bg-img'>
+            <div style={{ marginTop: "40%" }}>
+                <h1>Ready to read your fate?</h1>
 
-            <MultiUseButton
-                buttons={[
-                    {
-                        label: "Type Select",
-                        onClick: () => navigate('/Screens/TypeSelect')
-                    }
-                ]}
-            />
-
+                <MultiUseButton
+                    buttons={[
+                        {
+                            label: "Type Select",
+                            onClick: () => navigate('/Screens/TypeSelect')
+                        }
+                    ]}
+                />
+            </div>
         </div>
     )
 }
