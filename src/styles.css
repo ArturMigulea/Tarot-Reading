@@ -50,6 +50,10 @@ p {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  /* Puts the rest of the container above the darker filter */
+  position: relative;
+  z-index: 2;
 }
 
 .bg-img {
@@ -58,6 +62,12 @@ p {
   background-size: cover;      /* fill the screen */
   background-position: center; /* center image */
   background-repeat: no-repeat;
+}
+
+/* Darkens the image */
+.bg-img::before {
+  background-color: rgba(0, 0, 0, 0.5); /* change 0.5 to make darker or lighter */
+  z-index: 1;
 }
 
 .gypsy-bg-img {
