@@ -166,6 +166,10 @@ function FateReading() {
                             onClick: () => setView("grid")
                         },
                         {
+                            label: "Another Reading?",
+                            onClick: () => navigate('/Screens/TypeSelect')
+                        },
+                        {
                             label: "Consult the full deck",
                             onClick: () => navigate('/Screens/LazySusan')
                         }
