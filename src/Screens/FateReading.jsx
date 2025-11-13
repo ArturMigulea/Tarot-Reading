@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-import ReadingActions from "../Components/ReadingActions";
+import MultiUseButton from "../Components/MultiUseButton";
 import './FateReading.css';
 
 function ParchmentCard({ title, children }) {
@@ -140,7 +140,7 @@ function FateReading() {
                     //         Another Reading?
                     //     </button>
                     // </div>
-                    <ReadingActions
+                    <MultiUseButton
                         buttons={[
                             {
                                 label: "Next",
@@ -203,7 +203,7 @@ function FateReading() {
                         Consult the full deck
                     </button>
                 </div> */}
-                <ReadingActions
+                <MultiUseButton
                     buttons={[
                         {
                             label: "Back to card spread",

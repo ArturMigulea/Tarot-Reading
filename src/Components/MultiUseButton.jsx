@@ -1,7 +1,7 @@
 import React from "react";
-import './FateReading.css';
+import './MultiUseButton.css';
 
-export default function ReadingActions({
+export default function MultiUseButton({
     buttons = [],
     onClick, // optional global handler
 }) {
