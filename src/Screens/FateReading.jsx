@@ -116,12 +116,12 @@ function FateReading() {
                     <MultiUseButton
                         buttons={[
                             {
-                                label: "Next",
-                                onClick: () => setView("detail")
-                            },
-                            {
                                 label: "Another Reading?",
                                 onClick: () => navigate('/Screens/TypeSelect')
+                            },
+                            {
+                                label: "Next",
+                                onClick: () => setView("detail")
                             }
                         ]}
                     />
@@ -150,11 +150,9 @@ function FateReading() {
                     </div>
 
                     <div className="question-column">
-                        <ParchmentCard title={question || 'No question provided.'}>
-                        {question || `
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        `}
+                        <ParchmentCard title={'Your Question Was:'}>
+                        {question || ` You actually did not ask anything! 
+                        To ask a question, get a new reading `}
                         </ParchmentCard>
                     </div>
                 </div>
