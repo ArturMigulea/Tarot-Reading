@@ -47,13 +47,15 @@ p {
 
 .ScreenContainer {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-
-  /* Puts the rest of the container above the darker filter */
+  align-items: center;
+  justify-content: flex-start;  /* was center */
   position: relative;
   z-index: 2;
+
+  min-height: 100vh;            /* ensures full-screen minimum */
+  box-sizing: border-box;
+  padding-top: 2rem;            /* nice breathing room from the top */
 }
 
 /* Dark overlay */
@@ -74,7 +76,7 @@ p {
 
 .bg-img {
   width: 100vw;   /* 100% of viewport width */
-  height: 100vh;  /* 100% of viewport height */
+  min-height: 100vh;  /* 100% of viewport height */
   background-size: cover;      /* fill the screen */
   background-position: center; /* center image */
   background-repeat: no-repeat;
