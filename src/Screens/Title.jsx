@@ -6,7 +6,7 @@ function Title() {
     const navigate = useNavigate();
 
     return (
-        <div className='ScreenContainer gypsy-bg-img'>
+        <div className='ScreenContainer gypsy-bg-img bg-img'>
             <h1>This is the front page</h1>
             <p>Display the Gypsy lady here</p>
 
