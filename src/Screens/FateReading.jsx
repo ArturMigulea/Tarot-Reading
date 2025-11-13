@@ -150,7 +150,7 @@ function FateReading() {
                     </div>
 
                     <div className="question-column">
-                        <ParchmentCard title={ question ? "Your Question Was:" : "" }>
+                        <ParchmentCard title={ question && "Your Question Was:" }>
                             {
                             question || ` You actually did not ask anything! 
                             To ask a question, get a new reading `
