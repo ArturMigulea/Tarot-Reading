@@ -6,9 +6,8 @@ function Title() {
     const navigate = useNavigate();
 
     return (
-        <div className='ScreenContainer gypsy-bg-img bg-img'>
-            <h1>This is the front page</h1>
-            <p>Display the Gypsy lady here</p>
+        <div className='ScreenContainer gypsy-bg-img bg-img' style={{ marginTop: "40%" }}>
+            <h1>Ready to read your fate?</h1>
 
             <MultiUseButton
                 buttons={[
