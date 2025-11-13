@@ -28,7 +28,6 @@
   justify-content: space-around;
   gap: 15px;
   width: 100%;
-  max-width: 200px; /* optional, remove if you want full stretch */
 }
 
 .info-col {
@@ -47,6 +46,7 @@
 /* Make the parchment also fill its container */
 .parchment-card {
   width: 100%;
+  max-width: 400px; /* optional, remove if you want full stretch */
   box-sizing: border-box;
 
   background:
