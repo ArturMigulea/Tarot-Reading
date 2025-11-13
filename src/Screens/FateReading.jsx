@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+
 import MultiUseButton from "../Components/MultiUseButton";
 import './FateReading.css';
 
@@ -71,17 +72,6 @@ function FateReading() {
     fetchCards()
     }, [])
 
-            /* <h1>Fate Reading</h1>
-
-            <div>
-                <p>Your Question:</p>
-                <p>{question || 'No question provided.'}</p>
-            </div>
-            <div>
-                <p>Card Amount:</p>
-                <p>{cardAmount || 'No amount provided.'}</p>
-            </div> */
-
     return (
         <div>
             {view === "grid" && (
@@ -123,23 +113,6 @@ function FateReading() {
                 
                 {/* Button to go from first layout → second layout */}
                 {view === "grid" && (
-                    // <div className="reading-actions">
-                    //     <button
-                    //         className="action-btn"
-                    //         onClick={() => setView("detail")}
-                    //     >
-                    //         Next
-                    //     </button>
-
-                    //     <div className="action-divider" />
-
-                    //     <button
-                    //         className="action-btn"
-                    //         onClick={() => navigate('/Screens/TypeSelect')}
-                    //     >
-                    //         Another Reading?
-                    //     </button>
-                    // </div>
                     <MultiUseButton
                         buttons={[
                             {
@@ -186,23 +159,6 @@ function FateReading() {
                     </div>
                 </div>
 
-                {/* <div className="reading-actions">
-                    <button
-                        className="action-btn"
-                        onClick={() => setView("grid")}
-                    >
-                        Back to spread
-                    </button>
-
-                    <div className="action-divider" />
-
-                    <button
-                        className="action-btn"
-                        onClick={() => navigate('/Screens/LazySusan')}
-                    >
-                        Consult the full deck
-                    </button>
-                </div> */}
                 <MultiUseButton
                     buttons={[
                         {

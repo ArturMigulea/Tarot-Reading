@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
+import MultiUseButton from "../Components/MultiUseButton";
+
 function TypeSelect() {
     const navigate = useNavigate();
 
@@ -31,8 +33,22 @@ function TypeSelect() {
             <div>
                 {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
                 {/* Either pass 1 card or 3 cards to the next screen */}
-                <button onClick={() => handleNext(1)}>1 Card Reading</button>
-                <button onClick={() => handleNext(3)}>3 Card Reading</button>
+
+                {/* <button onClick={() => handleNext(1)}>1 Card Reading</button>
+                <button onClick={() => handleNext(3)}>3 Card Reading</button> */}
+
+                <MultiUseButton
+                    buttons={[
+                        {
+                            label: "1 Card Reading",
+                            onClick: () => handleNext(1)
+                        },
+                        {
+                            label: "3 Card Reading",
+                            onClick: () => handleNext(3)
+                        }
+                    ]}
+                />
             </div>
         </div>
     )

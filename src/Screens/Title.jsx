@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
+import MultiUseButton from "../Components/MultiUseButton";
+
 function Title() {
     const navigate = useNavigate();
 
@@ -7,7 +9,18 @@ function Title() {
         <div>
             <h1>This is the front page</h1>
             <p>Display the Gypsy lady here</p>
-            <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
+            
+            {/* <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button> */}
+
+            <MultiUseButton
+                buttons={[
+                    {
+                        label: "Type Select",
+                        onClick: () => navigate('/Screens/TypeSelect')
+                    }
+                ]}
+            />
+
         </div>
     )
 }
