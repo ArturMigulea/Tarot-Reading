@@ -50,3 +50,34 @@ p {
   /* color: white; */
   font-size: 20px;
 }
+
+/* bottom pill with two actions */
+.reading-actions {
+  margin-top: 40px;
+  padding: 18px 80px;
+  border-radius: 999px;
+  background: #efe7e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: fit-content;
+}
+
+/* text buttons inside pill */
+.action-btn {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+}
+
+/* vertical divider between actions */
+.action-divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(0, 0, 0, 0.25);
+}
