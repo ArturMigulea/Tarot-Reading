@@ -138,73 +138,73 @@ function FateReading() {
 
                     {/* Card Container, requires Javascript to loop the 3 cards and display them a certain way */}
                     <div className="reading-top">
-                    {
-						randomCards.length === 3 ? (
-							// Special layout just for 3 cards
-							<div className="cards-three-layout">
-								{/* Move the first two cards to the left */}
-								<div className="cards-left">
-									{randomCards.slice(0, 2).map(shortName => {
+						{
+							randomCards.length === 3 ? (
+								// Special layout just for 3 cards
+								<div className="cards-three-layout">
+									{/* Move the first two cards to the left */}
+									<div className="cards-left">
+										{randomCards.slice(0, 2).map(shortName => {
+										const card = data?.cards?.find(c => c.name_short === shortName);
+										const name = card?.name || shortName;
+
+										return (
+											<div key={shortName} className="card-wrapper">
+											<img
+												src={cardImages[shortName]}
+												alt={name}
+												className="card-image"
+											/>
+											</div>
+										);
+										})}
+									</div>
+
+									{/* Move final 3rd card to the right */}
+									<div className="card-right">
+										{randomCards.slice(2, 3).map(shortName => {
+										const card = data?.cards?.find(c => c.name_short === shortName);
+										const name = card?.name || shortName;
+
+										return (
+											<div key={shortName} className="card-wrapper">
+											<img
+												src={cardImages[shortName]}
+												alt={name}
+												className="card-image"
+											/>
+											</div>
+										);
+										})}
+									</div>
+								</div>
+							) : (
+								// Only 1 card has been chosen
+								<div className="cards-column">
+								{randomCards.map(shortName => {
 									const card = data?.cards?.find(c => c.name_short === shortName);
 									const name = card?.name || shortName;
 
 									return (
-										<div key={shortName} className="card-wrapper">
+									<div key={shortName} className="card-wrapper">
 										<img
-											src={cardImages[shortName]}
-											alt={name}
-											className="card-image"
+										src={cardImages[shortName]}
+										alt={name}
+										className="card-image"
 										/>
-										</div>
+									</div>
 									);
-									})}
+								})}
 								</div>
+							)
+						}
 
-								{/* Move final 3rd card to the right */}
-								<div className="card-right">
-									{randomCards.slice(2, 3).map(shortName => {
-									const card = data?.cards?.find(c => c.name_short === shortName);
-									const name = card?.name || shortName;
-
-									return (
-										<div key={shortName} className="card-wrapper">
-										<img
-											src={cardImages[shortName]}
-											alt={name}
-											className="card-image"
-										/>
-										</div>
-									);
-									})}
-								</div>
-							</div>
-						) : (
-							// Only 1 card has been chosen
-							<div className="cards-column">
-							{randomCards.map(shortName => {
-								const card = data?.cards?.find(c => c.name_short === shortName);
-								const name = card?.name || shortName;
-
-								return (
-								<div key={shortName} className="card-wrapper">
-									<img
-									src={cardImages[shortName]}
-									alt={name}
-									className="card-image"
-									/>
-								</div>
-								);
-							})}
-							</div>
-						)
-                    }
-
-                    <div className="question-column">
-                        <ParchmentCard title={question && "Your Question Was:"}>
-                        {question || ` You actually did not ask anything! 
-                        To ask a question, get a new reading `}
-                        </ParchmentCard>
-                    </div>
+						<div className="question-column">
+							<ParchmentCard title={question && "Your Question Was:"}>
+							{question || ` You actually did not ask anything! 
+							To ask a question, get a new reading `}
+							</ParchmentCard>
+						</div>
                     </div>
 
                     <MultiUseButton
