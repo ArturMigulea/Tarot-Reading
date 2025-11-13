@@ -132,8 +132,12 @@ function FateReading() {
             {view === "detail" && (
             <div className="reading-page">
                 <div className="reading-top">
-                    <div className="cards-column">
-                        {randomCards.map(shortName => {
+                
+                {randomCards.length === 3 ? (
+                    // Special layout just for 3 cards
+                    <div className="cards-three-layout">
+                    <div className="cards-left">
+                        {randomCards.slice(0, 2).map(shortName => {
                         const card = data?.cards?.find(c => c.name_short === shortName);
                         const name = card?.name || shortName;
 
@@ -149,31 +153,66 @@ function FateReading() {
                         })}
                     </div>
 
-                    <div className="question-column">
-                        <ParchmentCard title={ question && "Your Question Was:" }>
-                            {
-                            question || ` You actually did not ask anything! 
-                            To ask a question, get a new reading `
-                            }
-                        </ParchmentCard>
+                    <div className="card-right">
+                        {randomCards.slice(2, 3).map(shortName => {
+                        const card = data?.cards?.find(c => c.name_short === shortName);
+                        const name = card?.name || shortName;
+
+                        return (
+                            <div key={shortName} className="card-wrapper">
+                            <img
+                                src={cardImages[shortName]}
+                                alt={name}
+                                className="card-image"
+                            />
+                            </div>
+                        );
+                        })}
                     </div>
+                    </div>
+                ) : (
+                    // Fallback: your original vertical stack
+                    <div className="cards-column">
+                    {randomCards.map(shortName => {
+                        const card = data?.cards?.find(c => c.name_short === shortName);
+                        const name = card?.name || shortName;
+
+                        return (
+                        <div key={shortName} className="card-wrapper">
+                            <img
+                            src={cardImages[shortName]}
+                            alt={name}
+                            className="card-image"
+                            />
+                        </div>
+                        );
+                    })}
+                    </div>
+                )}
+
+                <div className="question-column">
+                    <ParchmentCard title={question && "Your Question Was:"}>
+                    {question || ` You actually did not ask anything! 
+                    To ask a question, get a new reading `}
+                    </ParchmentCard>
+                </div>
                 </div>
 
                 <MultiUseButton
-                    buttons={[
-                        {
-                            label: "Back to card spread",
-                            onClick: () => setView("grid")
-                        },
-                        {
-                            label: "Another Reading?",
-                            onClick: () => navigate('/Screens/TypeSelect')
-                        },
-                        {
-                            label: "Consult the full deck",
-                            onClick: () => navigate('/Screens/LazySusan')
-                        }
-                    ]}
+                buttons={[
+                    {
+                    label: "Back to card spread",
+                    onClick: () => setView("grid")
+                    },
+                    {
+                    label: "Another Reading?",
+                    onClick: () => navigate("/Screens/TypeSelect")
+                    },
+                    {
+                    label: "Consult the full deck",
+                    onClick: () => navigate("/Screens/LazySusan")
+                    }
+                ]}
                 />
             </div>
             )}

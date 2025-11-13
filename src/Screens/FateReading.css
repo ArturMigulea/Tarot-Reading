@@ -123,3 +123,24 @@
 .question-column {
   flex: 1;
 }
+
+/* Special layout when there are 3 cards in detail mode */
+.cards-three-layout {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Left side: two cards stacked */
+.cards-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Right side: single card centered relative to the pair */
+.card-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
