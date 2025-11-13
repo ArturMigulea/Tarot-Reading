@@ -8,9 +8,6 @@
   align-items: center;
   gap: 20px;
   width: 100%;
-
-  /* Required or all the cards just shoot upward off of the screen */
-  max-width: 1000px;
 }
 
 .card-row, .info-row {
@@ -24,14 +21,6 @@
   flex: 1 1 0;
   display: flex;
   justify-content: center;
-}
-
-/* Bottom row: parchments */
-.info-row {
-  display: flex;
-  justify-content: space-around;
-  gap: 15px;
-  width: 100%;
 }
 
 /* Card image fills its column */
@@ -102,7 +91,9 @@
   width: 80%;
   align-items: center;
   justify-content: space-between;
-  /* gap: 80px; */
+
+  /* Required or all the cards just shoot upward off of the screen */
+  max-width: 1000px;
 }
 
 /* cards stacked vertically */
