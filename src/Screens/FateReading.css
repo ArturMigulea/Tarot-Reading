@@ -1,32 +1,44 @@
-/* Existing, but now actually used */
-.cards-container {
+/* Overall layout container */
+.reading-grid {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-bottom: 35px;
+  width: 100%;
 }
 
-/* Each card + its parchment info is one row */
-.cards-row {
+/* Top row: cards */
+.card-row {
   display: flex;
-  justify-content: space-around;  /* side by side, spaced around */
-  align-items: stretch;
-  gap: 20px;
+  justify-content: space-around;
+  gap: 15px;
+  width: 100%;
 }
 
-/* The two containers (left: image, right: parchment) */
-.card-container,
-.info-container {
+.card-col {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Bottom row: parchments */
+.info-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  width: 100%;
+}
+
+.info-col {
   flex: 1 1 0;
 }
 
-/* Make the card fill its container width */
+/* Card image fills its column */
 .card-image {
   width: 100%;
+  max-width: 200px; /* optional, remove if you want full stretch */
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  display: block;
 }
 
 /* Make the parchment also fill its container */

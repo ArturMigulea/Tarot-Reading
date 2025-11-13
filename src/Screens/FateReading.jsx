@@ -81,32 +81,43 @@ function FateReading() {
                 <p>{cardAmount || 'No amount provided.'}</p>
             </div>
 
-            <div className="cards-container">
-                {randomCards.map((shortName) => {
-                    const card = data?.cards?.find(c => c.name_short === shortName);
-                    const name = card?.name || shortName;
-                    const desc = card?.desc || '';
+            <div className="reading-grid">
 
-                    return (
-                    <div key={shortName} className="cards-row">
-                        {/* Card image container */}
-                        <div className="card-container">
-                        <img
-                            src={cardImages[shortName]}
-                            alt={name}
-                            className="card-image"
-                        />
-                        </div>
+                {/* Top row: cards */}
+                <div className="card-row">
+                    {randomCards.map((shortName) => {
+                        const card = data?.cards?.find(c => c.name_short === shortName);
+                        const name = card?.name || shortName;
 
-                        {/* Parchment info container */}
-                        <div className="info-container">
-                        <ParchmentCard title={name}>
-                            {desc}
-                        </ParchmentCard>
-                        </div>
-                    </div>
-                    );
-                })}
+                        return (
+                            <div key={shortName} className="card-col">
+                                <img
+                                    src={cardImages[shortName]}
+                                    alt={name}
+                                    className="card-image"
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {/* Bottom row: parchment info */}
+                <div className="info-row">
+                    {randomCards.map((shortName) => {
+                        const card = data?.cards?.find(c => c.name_short === shortName);
+                        const name = card?.name || shortName;
+                        const desc = card?.desc || '';
+
+                        return (
+                            <div key={shortName} className="info-col">
+                                <ParchmentCard title={name}>
+                                    {desc}
+                                </ParchmentCard>
+                            </div>
+                        );
+                    })}
+                </div>
+
             </div>
             <button onClick={() => navigate('/Screens/LazySusan')}>Next</button>
             <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
