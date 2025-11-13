@@ -82,7 +82,6 @@ function FateReading() {
             </div>
 
             <div className="reading-grid">
-
                 {/* Top row: cards */}
                 <div className="card-row">
                     {randomCards.map((shortName) => {
@@ -117,8 +116,8 @@ function FateReading() {
                         );
                     })}
                 </div>
-
             </div>
+
             <button onClick={() => navigate('/Screens/LazySusan')}>Next</button>
             <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
         </div>
