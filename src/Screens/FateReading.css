@@ -96,7 +96,6 @@
   box-sizing: border-box;
 }
 
-/* top half: cards on the left, question on the right */
 .reading-top {
   display: flex;
   width: 80%;
