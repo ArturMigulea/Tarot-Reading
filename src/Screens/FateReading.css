@@ -16,8 +16,6 @@
 
 .card-col {
   flex: 1 1 0;
-  display: flex;
-  justify-content: center;
 }
 
 /* Bottom row: parchments */
@@ -35,7 +33,6 @@
 /* Card image fills its column */
 .card-image {
   width: 100%;
-  max-width: 200px; /* optional, remove if you want full stretch */
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
