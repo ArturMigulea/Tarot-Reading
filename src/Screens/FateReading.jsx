@@ -20,6 +20,8 @@ function FateReading() {
     const [data, setData] = useState(null); //data for a specific card
     const [randomCards, setRandomCards] = useState([]);
 
+     const [view, setView] = useState("grid"); // "grid" = your current layout, "detail" = new layout
+
     //from "/public/Cards[all of the jpg files]" select cardAmount random cards
     const shortNames = [
         "ar00", "ar01","ar02","ar03","ar04","ar05","ar06","ar07","ar08","ar09","ar10",
@@ -68,9 +70,7 @@ function FateReading() {
     fetchCards()
     }, [])
 
-    return (
-        <div>
-            <h1>Fate Reading</h1>
+            /* <h1>Fate Reading</h1>
 
             <div>
                 <p>Your Question:</p>
@@ -79,49 +79,113 @@ function FateReading() {
             <div>
                 <p>Card Amount:</p>
                 <p>{cardAmount || 'No amount provided.'}</p>
-            </div>
+            </div> */
 
+    return (
+        <div>
+            {view === "grid" && (
             <div className="reading-grid">
                 {/* Top row: cards */}
                 <div className="card-row">
-                    {randomCards.map((shortName) => {
-                        const card = data?.cards?.find(c => c.name_short === shortName);
-                        const name = card?.name || shortName;
+                {randomCards.map((shortName) => {
+                    const card = data?.cards?.find(c => c.name_short === shortName);
+                    const name = card?.name || shortName;
 
-                        return (
-                            <div key={shortName} className="card-col">
-                                <img
-                                    src={cardImages[shortName]}
-                                    alt={name}
-                                    className="card-image"
-                                />
-                            </div>
-                        );
-                    })}
+                    return (
+                    <div key={shortName} className="card-col">
+                        <img
+                        src={cardImages[shortName]}
+                        alt={name}
+                        className="card-image"
+                        />
+                    </div>
+                    );
+                })}
                 </div>
 
                 {/* Bottom row: parchment info */}
                 <div className="info-row">
-                    {randomCards.map((shortName) => {
-                        const card = data?.cards?.find(c => c.name_short === shortName);
-                        const name = card?.name || shortName;
-                        const desc = card?.desc || '';
+                {randomCards.map((shortName) => {
+                    const card = data?.cards?.find(c => c.name_short === shortName);
+                    const name = card?.name || shortName;
+                    const desc = card?.desc || '';
 
-                        return (
-                            <div key={shortName} className="info-col">
-                                <ParchmentCard title={name}>
-                                    {desc}
-                                </ParchmentCard>
-                            </div>
-                        );
-                    })}
+                    return (
+                    <div key={shortName} className="info-col">
+                        <ParchmentCard title={name}>
+                        {desc}
+                        </ParchmentCard>
+                    </div>
+                    );
+                })}
                 </div>
             </div>
+            )}
 
-            <button onClick={() => navigate('/Screens/LazySusan')}>Next</button>
-            <button onClick={() => navigate('/Screens/TypeSelect')}>Type Select</button>
+            {view === "detail" && (
+            <div className="reading-page">
+                <div className="reading-top">
+                    <div className="cards-column">
+                        {randomCards.map(shortName => {
+                        const card = data?.cards?.find(c => c.name_short === shortName);
+                        const name = card?.name || shortName;
+
+                        return (
+                            <div key={shortName} className="card-wrapper">
+                            <img
+                                src={cardImages[shortName]}
+                                alt={name}
+                                className="card-image"
+                            />
+                            </div>
+                        );
+                        })}
+                    </div>
+
+                    <div className="question-column">
+                        <ParchmentCard title="[ User's Question ]">
+                        {question || `
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        `}
+                        </ParchmentCard>
+                    </div>
+                </div>
+
+                <div className="reading-actions">
+                    <button
+                        className="action-btn"
+                        onClick={() => setView("grid")}
+                    >
+                        Back to spread
+                    </button>
+
+                    <div className="action-divider" />
+
+                    <button
+                        className="action-btn"
+                        onClick={() => navigate('/Screens/LazySusan')}
+                    >
+                        Consult the full deck
+                    </button>
+                </div>
+            </div>
+            )}
+
+            {/* Button to go from first layout → second layout */}
+            {view === "grid" && (
+            <button onClick={() => setView("detail")}>
+                Next
+            </button>
+            )}
+
+            {/* Keep your other nav button if you want */}
+            <button onClick={() => navigate('/Screens/TypeSelect')}>
+            Type Select
+            </button>
         </div>
-    )
+    );
+
 }
 
 export default FateReading
