@@ -7,7 +7,7 @@ function Title() {
 
     return (
         <div className='ScreenContainer gypsy-bg-img bg-img'>
-            <div style={{ marginTop: "20%", display: "flex", justifyContent: "center" }}>
+            <div style={{ marginTop: "20%", display: "flex", justifyContent: "center", flexDirection: "column"}}>
                 <h1>Ready to read your fate?</h1>
 
                 <MultiUseButton
