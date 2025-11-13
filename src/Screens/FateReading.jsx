@@ -73,7 +73,8 @@ function FateReading() {
     }, [])
 
     return (
-        <div>
+        <div class="crystalBall-bg-img">
+			{/* If the screen is in First screen mode, display this */}
             {view === "grid" && (
             <div className="reading-grid">
                 {/* Top row: cards */}
