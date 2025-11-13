@@ -10,26 +10,17 @@
   width: 100%;
 }
 
-/* Top row: cards */
-.card-row {
+.card-row, .info-row {
   display: flex;
-  justify-content: space-around;
-  gap: 15px;
+  justify-content: center;   /* center all cards */
+  gap: 20px;                 /* space between cards */
   width: 100%;
 }
 
 .card-col, .info-col {
-  flex: 1 1 0;
   display: flex;
   justify-content: center;
-}
-
-/* Bottom row: parchments */
-.info-row {
-  display: flex;
-  justify-content: space-around;
-  gap: 15px;
-  width: 100%;
+  flex: 0 0 auto;            /* or just omit flex entirely */
 }
 
 /* Card image fills its column */
