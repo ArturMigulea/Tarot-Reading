@@ -8,6 +8,9 @@
   align-items: center;
   gap: 20px;
   width: 100%;
+
+  /* Required or all the cards just shoot upward off of the screen */
+  max-width: 1000px;    /* adjust to taste */
 }
 
 .card-row, .info-row {
