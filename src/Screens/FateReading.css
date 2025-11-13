@@ -25,7 +25,8 @@
   display: flex;
   justify-content: space-around;
   gap: 15px;
-  /* width: 100%; */
+  width: 100%;
+  max-width: 200px; /* optional, remove if you want full stretch */
 }
 
 .info-col {
