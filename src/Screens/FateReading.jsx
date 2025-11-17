@@ -22,7 +22,12 @@ function FateReading() {
     const [data, setData] = useState(null); //data for a specific card
     const [randomCards, setRandomCards] = useState([]);
 
-     const [view, setView] = useState("grid"); // "grid" = your current layout, "detail" = new layout
+    const [view, setView] = useState("grid"); // "grid" = your current layout, "detail" = new layout
+
+    const [reading, setReading] = useState("");
+    const [readingLoading, setReadingLoading] = useState(false);
+    const [readingError, setReadingError] = useState(null);
+    const [hasRequestedReading, setHasRequestedReading] = useState(false);
 
     //from "/public/Cards[all of the jpg files]" select cardAmount random cards
     const shortNames = [
@@ -37,7 +42,7 @@ function FateReading() {
     // Map short names to image paths
     const cardImages = {}
     shortNames.forEach(name => {
-        cardImages[name] = `/Tarot-Reading/Cards/${name}.jpg`
+        cardImages[name] = `/Cards/${name}.jpg`
     });
 
     useEffect(() => {
@@ -70,10 +75,67 @@ function FateReading() {
     }
 
     fetchCards()
-    }, [])
+    }, []);
+
+    useEffect(() => {
+    // Only trigger when:
+    // - we're in the detail view
+    // - card data is loaded
+    // - we have cards
+    // - and we haven't already requested a reading
+    if (view !== "detail") return;
+    if (!data?.cards || randomCards.length === 0) return;
+    if (hasRequestedReading) return;
+
+    const effectiveQuestion =
+        question || "Give a general tarot fate reading based on these cards.";
+
+    const cardsForApi = randomCards.map(shortName => {
+        const card = data.cards.find(c => c.name_short === shortName);
+        return {
+        name: card?.name || shortName,
+        reversed: false,          // you can add real reversed logic later
+        position: undefined       // or "past/present/future" if you want
+        };
+    });
+
+    const fetchReading = async () => {
+        try {
+        setReadingLoading(true);
+        setReadingError(null);
+
+        const res = await fetch("/api/tarot", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+            question: effectiveQuestion,
+            cards: cardsForApi,
+            }),
+        });
+
+        if (!res.ok) {
+            const errData = await res.json().catch(() => ({}));
+            throw new Error(errData.error || "Failed to get tarot reading");
+        }
+
+        const dataJson = await res.json();
+        setReading(dataJson.interpretation || "");
+        setHasRequestedReading(true);
+        } catch (err) {
+        console.error(err);
+        setReadingError(err.message || "Something went wrong");
+        } finally {
+        setReadingLoading(false);
+        }
+    };
+
+    fetchReading();
+    }, [view, data, randomCards, question, hasRequestedReading]);
 
     return (
-        <div class="ScreenContainer crystalBall-bg-img bg-img">
+        <div className="ScreenContainer crystalBall-bg-img bg-img">
 			{/* If the screen is in First screen mode, display this */}
             {view === "grid" && (
             <div className="reading-grid">
@@ -204,6 +266,13 @@ function FateReading() {
 							{question || ` You actually did not ask anything! 
 							To ask a question, get a new reading `}
 							</ParchmentCard>
+
+                            {/* NEW: AI fate reading */}
+                            <ParchmentCard title="The Cards Reveal:">
+                                {readingLoading && "The spirits are whispering... please wait."}
+                                {readingError && `Hmm, something interfered with the reading: ${readingError}`}
+                                {!readingLoading && !readingError && (reading || "No message came through this time.")}
+                            </ParchmentCard>
 						</div>
                     </div>
 
