@@ -5,8 +5,19 @@ const client = new OpenAI({
 });
 
 export default async function handler(req, res) {
+  console.log("Tarot API hit:", req.method, req.url);
+
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
+    return;
+  }
+
+  if (!process.env.OPENAI_API_KEY) {
+    console.error("OPENAI_API_KEY is missing");
+    res.status(500).json({
+      error: "Server misconfiguration",
+      details: "OPENAI_API_KEY environment variable is not set",
+    });
     return;
   }
 
@@ -69,9 +80,18 @@ Please give an interpretation.
 
     res.status(200).json({ interpretation: text });
   } catch (err) {
-    console.error(err);
-    res
-      .status(500)
-      .json({ error: "Internal server error", details: err.message });
+    console.error("Tarot API error:", err);
+
+    // Try to extract something meaningful from OpenAI / fetch errors
+    const details =
+      err?.response?.data?.error?.message ||
+      err?.error?.message ||
+      err?.message ||
+      "Unknown error";
+
+    res.status(500).json({
+      error: "Internal server error",
+      details,
+    });
   }
 }
