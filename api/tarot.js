@@ -66,23 +66,23 @@ ${cardList}
 Please give an interpretation.
 `;
 
-    const completion = await client.responses.create({
-      model: "gpt-4.1-mini",
-      input: [
+    // ✅ Use Chat Completions API (simple, stable)
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt },
       ],
     });
 
     const text =
-      completion.output?.[0]?.content?.[0]?.text ??
+      completion.choices?.[0]?.message?.content ||
       "I sense something, but the vision is unclear…";
 
     res.status(200).json({ interpretation: text });
   } catch (err) {
     console.error("Tarot API error:", err);
 
-    // Try to extract something meaningful from OpenAI / fetch errors
     const details =
       err?.response?.data?.error?.message ||
       err?.error?.message ||

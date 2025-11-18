@@ -116,8 +116,8 @@ function FateReading() {
         });
 
         if (!res.ok) {
-            const errData = await res.json().catch(() => ({}));
-            throw new Error(errData.error || "Failed to get tarot reading");
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.details || errData.error || "Request failed");
         }
 
         const dataJson = await res.json();
