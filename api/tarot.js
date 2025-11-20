@@ -53,7 +53,7 @@ Guidelines:
 - First briefly describe the cards and their symbolic meaning.
 - Then interpret how they relate to the user's question.
 - If there is advice, phrase it as gentle guidance, not absolute destiny.
-- Keep it to 3–6 paragraphs.
+- Keep it a maximum of 3 paragraphs.
 `;
 
     const userPrompt = `
