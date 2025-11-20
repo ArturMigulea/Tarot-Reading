@@ -18,6 +18,7 @@ function Title() {
                         }
                     ]}
                 />
+                <p>This tarot reading is intended purely for fun and entertainment, and should not be taken as professional advice or used to make important life decisions.</p>
             </div>
         </div>
     )

@@ -19,8 +19,6 @@ function TypeSelect() {
 
     return (
         <div className='ScreenContainer crystalBall-bg-img bg-img'>
-            <p>This will be where the user chooses either one or 3 cards</p>
-
             <div>
                 <label htmlFor="userQuestion">Type In Your Question:</label>
                 <input
@@ -46,6 +44,8 @@ function TypeSelect() {
                         }
                     ]}
                 />
+                <p>A one-card tarot reading provides a quick, focused insight into your question</p>
+                <p>While a three-card reading offers a deeper perspective by revealing how the past, present, and future interact to shape your fate.</p>
             </div>
         </div>
     )
