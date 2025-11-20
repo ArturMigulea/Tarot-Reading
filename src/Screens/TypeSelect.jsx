@@ -28,25 +28,23 @@ function TypeSelect() {
                     onChange={handleChange} // Call handleChange when the input value changes
                 />
             </div>
-            <div>
-                {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
-                {/* Either pass 1 card or 3 cards to the next screen */}
+            {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
+            {/* Either pass 1 card or 3 cards to the next screen */}
 
-                <MultiUseButton
-                    buttons={[
-                        {
-                            label: "1 Card Reading",
-                            onClick: () => handleNext(1)
-                        },
-                        {
-                            label: "3 Card Reading",
-                            onClick: () => handleNext(3)
-                        }
-                    ]}
-                />
-                <p>A one-card tarot reading provides a quick, focused insight into your question</p>
-                <p>While a three-card reading offers a deeper perspective by revealing how the past, present, and future interact to shape your fate.</p>
-            </div>
+            <MultiUseButton
+                buttons={[
+                    {
+                        label: "1 Card Reading",
+                        onClick: () => handleNext(1)
+                    },
+                    {
+                        label: "3 Card Reading",
+                        onClick: () => handleNext(3)
+                    }
+                ]}
+            />
+            <p>A one-card tarot reading provides a quick, focused insight into your question</p>
+            <p>While a three-card reading offers a deeper perspective by revealing how the past, present, and future interact to shape your fate.</p>
         </div>
     )
 }
