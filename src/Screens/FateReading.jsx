@@ -268,11 +268,13 @@ function FateReading() {
 							</ParchmentCard>
 
                             {/* NEW: AI fate reading */}
-                            <ParchmentCard title="The Cards Reveal:">
-                                {readingLoading && "The spirits are whispering... please wait."}
-                                {readingError && `Hmm, something interfered with the reading: ${readingError}`}
-                                {!readingLoading && !readingError && (reading || "No message came through this time.")}
-                            </ParchmentCard>
+                            {question && (
+                                <ParchmentCard title="The Cards Reveal:">
+                                    {readingLoading && "The spirits are whispering... please wait."}
+                                    {readingError && `Hmm, something interfered with the reading: ${readingError}`}
+                                    {!readingLoading && !readingError && (reading || "No message came through this time.")}
+                                </ParchmentCard>
+                            )}
 						</div>
                     </div>
 
