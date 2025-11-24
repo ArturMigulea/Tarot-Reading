@@ -1,0 +1,149 @@
+.ScreenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  min-height: 100vh;            /* ensures full-screen minimum */
+  box-sizing: border-box;
+  padding-top: 2rem;            /* nice breathing room from the top */
+}
+
+.bg-img {
+  width: 100vw;   /* 100% of viewport width */
+  min-height: 100vh;  /* 100% of viewport height */
+  background-size: cover;      /* fill the screen */
+  background-position: center; /* center image */
+  background-repeat: no-repeat;
+}
+
+.gypsy-bg-img {
+  background-image: url('NoBackgroundGypsyLady.png');
+  background-size: 65%;   /* zoom in */
+  background-position: center bottom;          
+}
+
+
+.crystalBall-bg-img {
+  background-image: url('/CrystalBall.jpg');
+}
+
+.curved-heading {
+  font-family: "Tangerine", serif;
+  fill: #EDE7F6;         /* text color */
+  font-weight: 900;        /* bold hero effect */
+  margin: 0;               /* remove default spacing */
+  padding: 0;              /* remove top padding */
+  text-align: center;      /* center the SVG horizontally */
+  font-size: 10pt;
+}
+
+.curved-heading svg {
+  display: block;
+  width: 90%;              /* fill most of the page width */
+  height: auto;            /* keep aspect ratio */
+  margin: 0 auto;          /* center horizontally */
+  overflow: visible;       /* prevent clipping */
+}
+
+/* Wrapper for this page only */
+.button-wrapper {
+  display: flex;                /* flex allows easy centering */
+  justify-content: center;      /* horizontal center */
+  width: 100%;                  /* full width of page */
+  margin-top: 117px;            /* experiment with this to set vertical height */
+  /* or use padding-top/top if you prefer absolute positioning */
+}
+
+/* Style the button inside this wrapper */
+.button-wrapper .action-btn {
+  width: 100px;                  /* button diameter */
+  height: 100px;
+  border-radius: 50%;           /* circle shape */
+  background: #9b6eff;
+  color: #EDE7F6;
+  font-family: "Della Respira", serif;
+  font-size: 20pt;              /* adjust for label text */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;                /* center label inside button */
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper .action-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(199, 160, 255, 0.5);
+}
+
+/* Remove the white pill container ONLY on this page */
+.button-wrapper .reading-actions {
+  background: transparent;  /* removes the white background */
+}
+
+/* Container fixed to bottom-right */
+.info-button-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Small circular “i” button */
+.info-icon {
+  width: 32px;
+  height: 32px;
+  background: #C7A0FF;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Della Respira", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.info-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Tooltip */
+.info-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+
+  width: 220px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #EDE7F6;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-family: "Della Respira", serif;
+  line-height: 1.3;
+  text-align: left;
+}
+
+/* Show on hover */
+.info-button-wrapper:hover .info-tooltip {
+  display: block;
+}
+
+.artist-credits {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  font-size: 12pt;
+}

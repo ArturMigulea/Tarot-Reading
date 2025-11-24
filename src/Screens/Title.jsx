@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import './Title.css';
 
 import MultiUseButton from "../Components/MultiUseButton";
 
@@ -7,18 +8,41 @@ function Title() {
 
     return (
         <div className='ScreenContainer gypsy-bg-img bg-img'>
-            <div style={{ marginTop: "25%", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
-                <h1>Ready to read your fate?</h1>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}>
+                <h1 class="curved-heading"> {/* Source - https://stackoverflow.com/a - Posted by Phrog
+                - Retrieved 2025-11-23, License - CC BY-SA 2.5 */}
+                    <svg width="800" height="300" viewBox="0 0 100 50">
+                        <defs>
+                            <path id="curve" d="M5 35 C20 5 80 5 95 35" />
+                        </defs>
+            
+                        <text>
+                            <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                            Ready to Read Your Fate?
+                            </textPath>
+                         </text>
+                    </svg>
+                </h1>
 
-                <MultiUseButton
-                    buttons={[
-                        {
-                            label: "Type Select",
-                            onClick: () => navigate('/Screens/TypeSelect')
-                        }
-                    ]}
-                />
-                <p>This tarot reading is intended purely for fun and entertainment, and should not be taken as professional advice or used to make important life decisions.</p>
+                <div className="button-wrapper">
+                    <MultiUseButton
+                        buttons={[
+                            {
+                                label: "Begin",
+                                onClick: () => navigate('/Screens/TypeSelect')
+                            }
+                        ]}
+                    />
+                </div>
+                 <p className='artist-credits' > Artist Credits: Megan Lynn Kott and </p>
+                </div>
+            <div className="info-button-wrapper">
+                <div className="info-icon">i</div>
+                <div className="info-tooltip">
+                    This tarot reading is intended purely for fun and entertainment,
+                    and should not be taken as professional advice
+                    or used to make important life decisions.
+                </div>
             </div>
         </div>
     )

@@ -3,11 +3,11 @@
 /* Defining colour variables and their colour codes here */
 :root {
   /* Background */
-  --bg-body: #121212;
+  --bg-body: #0D1B2A;
   --bg-card: #1E1E1E;
 
   /* Text */
-  --text-colour-primary:   rgba(255, 255, 255, 0.87);
+  --text-colour-primary:   #EDE7F6;
   --text-colour-secondary: #B3B3B3;
 }
 
@@ -45,48 +45,3 @@ p {
   font-size: 20px;
 }
 
-.ScreenContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-
-  min-height: 100vh;            /* ensures full-screen minimum */
-  box-sizing: border-box;
-  padding-top: 2rem;            /* nice breathing room from the top */
-}
-
-/* Dark overlay */
-.ScreenContainer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);  /* darkness */
-  pointer-events: none;                  /* <— key: doesn’t block clicks */
-  z-index: 0;
-}
-
-/* Make sure content sits above overlay */
-.ScreenContainer > * {
-  position: relative;
-  z-index: 1;
-}
-
-.bg-img {
-  width: 100vw;   /* 100% of viewport width */
-  min-height: 100vh;  /* 100% of viewport height */
-  background-size: cover;      /* fill the screen */
-  background-position: center; /* center image */
-  background-repeat: no-repeat;
-}
-
-.gypsy-bg-img {
-  background-image: url('/GypsyLady.jpg');
-
-}
-
-.crystalBall-bg-img {
-  background-image: url('/CrystalBall.jpg');
-}
