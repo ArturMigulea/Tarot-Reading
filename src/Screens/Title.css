@@ -19,7 +19,7 @@
 }
 
 .gypsy-bg-img {
-  background-image: url('NoBackgroundGypsyLady.png');
+  background-image: url('/NoBackgroundGypsyLady.png');
   background-size: 65%;   /* zoom in */
   background-position: center bottom;          
 }
