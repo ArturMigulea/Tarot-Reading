@@ -35,7 +35,7 @@
 /* Make the parchment also fill its container */
 .parchment-card {
   width: 100%;
-  max-width: 400px; /* optional, remove if you want full stretch */
+  max-width: 400px;
   box-sizing: border-box;
 
   background:
@@ -43,7 +43,10 @@
     linear-gradient(180deg, #f8f2d4, #e9dbb5 80%);
   border: 1px solid rgba(120, 90, 40, 0.4);
   border-radius: 8px;
-  padding: 1.5rem;
+
+  /* ↓↓↓ Tighter vertical spacing ↓↓↓ */
+  padding: 0.8rem 1.2rem;   /* was 1.5rem */
+
   color: #3b2f1e;
   box-shadow:
     0 0 20px rgba(0, 0, 0, 0.15),
@@ -55,6 +58,7 @@
   display: flex;
   flex-direction: column;
 }
+
 
 /* Subtle paper texture overlay */
 .parchment-card::before {
@@ -74,6 +78,35 @@
   border-radius: inherit;
   box-shadow: inset 0 0 60px rgba(80, 50, 20, 0.25);
   pointer-events: none;
+}
+
+/* Reduce padding inside parchment cards to increase visual spacing */
+.parchment-card.reduced-padding {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.fade-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+/* Fade-in for question and reading boxes */
+.fade-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* page container */
