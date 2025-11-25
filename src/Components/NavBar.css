@@ -1,0 +1,86 @@
+/* MysticNav.css */
+
+.nav-bar-wrapper {
+  position: fixed;
+  top: 16px;
+  z-index: 100;
+
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-bar {
+  display: inline-flex;
+	width: fit-content;
+	height: fit-content;
+	align-items: center;
+	justify-content: center;
+
+  gap: 1.5rem;
+  padding: 1% 2%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.8));
+  box-shadow:
+    0 0 18px rgba(150, 140, 255, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(14px);
+}
+
+.nav-bar-item {
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.2rem 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555555; /* darker gray for non-active */
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    font-size 0.2s ease;
+}
+
+.nav-bar-item::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.2rem;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #b88cff, #7fffd4);
+  transform: translateX(-50%);
+  transition: width 0.2s ease;
+}
+
+.nav-bar-item:hover {
+  color: #888888;
+  transform: translateY(-1px);
+}
+
+.nav-bar-item:hover::after {
+  width: 80%;
+}
+
+/* ACTIVE: lighter gray + bigger */
+.nav-bar-item--active {
+  color: #e0e0e0;
+  font-size: 1.15rem;
+  transform: translateY(-1px);
+  text-shadow: 0 0 12px rgba(191, 159, 255, 0.8);
+}
+
+.nav-bar-item--active::after {
+  width: 100%;
+}
+
+.mystic-nav-separator {
+  color: #777;
+  opacity: 0.5;
+  user-select: none;
+}

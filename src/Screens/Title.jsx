@@ -9,7 +9,7 @@ function Title() {
     return (
         <div className='ScreenContainer gypsy-bg-img bg-img'>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}>
-                <h1 class="curved-heading"> {/* Source - https://stackoverflow.com/a - Posted by Phrog
+                <h1 className="curved-heading"> {/* Source - https://stackoverflow.com/a - Posted by Phrog
                 - Retrieved 2025-11-23, License - CC BY-SA 2.5 */}
                     <svg width="800" height="300" viewBox="0 0 100 50">
                         <defs>
@@ -17,7 +17,7 @@ function Title() {
                         </defs>
             
                         <text>
-                            <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                            <textPath href="#curve" startOffset="50%" textAnchor="middle">
                             Ready to Read Your Fate?
                             </textPath>
                          </text>
@@ -34,7 +34,7 @@ function Title() {
                         ]}
                     />
                 </div>
-                 <p className='artist-credits' > Artist Credits: Megan Lynn Kott and </p>
+                 <p className='artist-credits' > Artist Credits: Megan Lynn Kott and Corina Migulea</p>
                 </div>
             <div className="info-button-wrapper">
                 <div className="info-icon">i</div>

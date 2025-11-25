@@ -21,7 +21,7 @@ function FateReading() {
     const [revealed, setRevealed] = useState({});     // track which cards have been revealed at least once
     const [randomCards, setRandomCards] = useState([]);
     const [data, setData] = useState(null);           // data for a specific card
-    const [view, setView] = useState("grid");         // "grid" = card grid layout, "detail" = detailed reading
+    // const [view, setView] = useState("grid");         // "grid" = card grid layout, "detail" = detailed reading
     const [reading, setReading] = useState("");       // AI-generated reading
     const [readingLoading, setReadingLoading] = useState(false);
     const [readingError, setReadingError] = useState(null);
@@ -29,7 +29,7 @@ function FateReading() {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { question, cardAmount } = location.state || {}; // safely extract passed data
+    const { question, cardAmount = 3 } = location.state || {}; // safely extract passed data
 
     // ---- Card short names and mapping ----
     const shortNames = [
@@ -81,9 +81,8 @@ function FateReading() {
         fetchCards();
     }, [cardAmount]);
 
-    // ---- useEffect: Fetch AI reading when in detail view ----
+    // ---- useEffect: Fetch AI reading
     useEffect(() => {
-        if (view !== "detail") return;                  // only in detail view
         if (!data?.cards || randomCards.length === 0) return; // ensure cards loaded
         if (hasRequestedReading) return;               // don't request multiple times
 
@@ -127,191 +126,85 @@ function FateReading() {
         };
 
         fetchReading();
-    }, [view, data, randomCards, question, hasRequestedReading]);
+    }, [data, randomCards, question, hasRequestedReading]);
 
     // ---- JSX return ----
     return (
-        <div className="ScreenContainer crystalBall-bg-img bg-img">
+			<div className="ScreenContainer crystalBall-bg-img bg-img">
+				<div className="reading-grid">
 
-            {/* --- GRID VIEW: Initial card spread --- */}
-            {view === "grid" && (
-                <div className="reading-grid">
+					{/* Top row: cards */}
+					<div className="card-row">
+						{randomCards.map((shortName) => {
+							const card = data?.cards?.find(c => c.name_short === shortName);
+							const name = card?.name || shortName;
 
-                    {/* Top row: cards */}
-                    <div className="card-row">
-                        {randomCards.map((shortName) => {
-                            const card = data?.cards?.find(c => c.name_short === shortName);
-                            const name = card?.name || shortName;
+							return (
+								<div key={shortName} className="card-col">
+									<div
+										className={`flip-card ${flipped[shortName] ? "flipped" : ""}`}
+										onClick={() => {
+												setFlipped(prev => ({ ...prev, [shortName]: !prev[shortName] }));
+												setRevealed(prev => ({ ...prev, [shortName]: true }));
+										}}
+									>
+										<div className="flip-inner">
+											<img src="/Cards/back.jpg" className="flip-face flip-back" alt="card back" />
+											<img src={cardImages[shortName]} className="flip-face flip-front" alt={name} />
+											</div>
+									</div>
+								</div>
+							);
+						})}
+					</div>
 
-                            return (
-                                <div key={shortName} className="card-col">
-                                    <div
-                                        className={`flip-card ${flipped[shortName] ? "flipped" : ""}`}
-                                        onClick={() => {
-                                            setFlipped(prev => ({ ...prev, [shortName]: !prev[shortName] }));
-                                            setRevealed(prev => ({ ...prev, [shortName]: true }));
-                                        }}
-                                    >
-                                        <div className="flip-inner">
-                                            <img src="/Cards/back.jpg" className="flip-face flip-back" alt="card back" />
-                                            <img src={cardImages[shortName]} className="flip-face flip-front" alt={name} />
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
+					{/* Bottom row: parchment info for revealed cards */}
+					<div className="info-row">
+						{randomCards.map((shortName) => {
+							const card = data?.cards?.find(c => c.name_short === shortName);
+							const name = card?.name || shortName;
+							let desc = card?.desc || '';
+							const sentences = desc.split(/(?<=\.)\s+/);
+							desc = sentences.slice(0, 2).join(' ');
 
-                    {/* Bottom row: parchment info for revealed cards */}
-                    <div className="info-row">
-                        {randomCards.map((shortName) => {
-                            const card = data?.cards?.find(c => c.name_short === shortName);
-                            const name = card?.name || shortName;
-                            let desc = card?.desc || '';
-                            const sentences = desc.split(/(?<=\.)\s+/);
-                            desc = sentences.slice(0, 2).join(' ');
+							return (
+								<div key={shortName} className="info-col">
+									{revealed[shortName] && (
+										<ParchmentCard title={name} className="fade-in">
+											{desc}
+										</ParchmentCard>
+									)}
+								</div>
+							);
+						})}
+					</div>
+				</div>
+				<div className="reading-page">
+					<div className="reading-top">
+						<div className="question-column">
+							<ParchmentCard title={question && "Your Question Was:"}>
+								{question || ` You actually did not ask anything! To ask a question, get a new reading `}
+							</ParchmentCard>
 
-                            return (
-                                <div key={shortName} className="info-col">
-                                    {revealed[shortName] && (
-                                        <ParchmentCard title={name} className="fade-in">
-                                            {desc}
-                                        </ParchmentCard>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
+							{question && (
+								<ParchmentCard title="The Cards Reveal:">
+									{readingLoading && "The spirits are whispering... please wait."}
+									{readingError && `Hmm, something interfered with the reading: ${readingError}`}
+									{!readingLoading && !readingError && (reading || "No message came through this time.")}
+								</ParchmentCard>
+							)}
+						</div>
+					</div>
 
-                    {/* Buttons to go next or another reading */}
-                    <MultiUseButton
-                        buttons={[
-                            { label: "Another Reading?", onClick: () => navigate('/Screens/TypeSelect') },
-                            { label: "Next", onClick: () => setView("detail") }
-                        ]}
-                    />
-
-                </div>
-            )}
-
-            {/* --- DETAIL VIEW: 3-card reading, question & AI interpretation --- */}
-            {view === "detail" && (
-                <div className="reading-page">
-
-                    <div className="reading-top">
-
-                        {/* --- Card Layout --- */}
-                        {randomCards.length === 3 ? (
-                            <div className="cards-three-layout">
-
-                                {/* Left side: two stacked cards */}
-                                <div className="cards-left">
-                                    {randomCards.slice(0, 2).map(shortName => {
-                                        const card = data?.cards?.find(c => c.name_short === shortName);
-                                        const name = card?.name || shortName;
-
-                                        return (
-                                            <div key={shortName} className="card-wrapper">
-                                                <div
-                                                    className={`flip-card ${flipped[shortName] ? "flipped" : ""}`}
-                                                    onClick={() => {
-                                                        setFlipped(prev => ({ ...prev, [shortName]: !prev[shortName] }));
-                                                        setRevealed(prev => ({ ...prev, [shortName]: true }));
-                                                    }}
-                                                >
-                                                    <div className="flip-inner">
-                                                        <img src="/Cards/back.jpg" className="flip-face flip-back" alt="card back" />
-                                                        <img src={cardImages[shortName]} className="flip-face flip-front" alt={name} />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-
-                                {/* Right side: single card */}
-                                <div className="card-right">
-                                    {randomCards.slice(2, 3).map(shortName => {
-                                        const card = data?.cards?.find(c => c.name_short === shortName);
-                                        const name = card?.name || shortName;
-
-                                        return (
-                                            <div key={shortName} className="card-wrapper">
-                                                <div
-                                                    className={`flip-card ${flipped[shortName] ? "flipped" : ""}`}
-                                                    onClick={() => {
-                                                        setFlipped(prev => ({ ...prev, [shortName]: !prev[shortName] }));
-                                                        setRevealed(prev => ({ ...prev, [shortName]: true }));
-                                                    }}
-                                                >
-                                                    <div className="flip-inner">
-                                                        <img src="/Cards/back.jpg" className="flip-face flip-back" alt="card back" />
-                                                        <img src={cardImages[shortName]} className="flip-face flip-front" alt={name} />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-
-                            </div>
-                        ) : (
-                            // fallback if only 1 card
-                            <div className="cards-column">
-                                {randomCards.map(shortName => {
-                                    const card = data?.cards?.find(c => c.name_short === shortName);
-                                    const name = card?.name || shortName;
-
-                                    return (
-                                        <div key={shortName} className="card-wrapper">
-                                            <div
-                                                className={`flip-card ${flipped[shortName] ? "flipped" : ""}`}
-                                                onClick={() => {
-                                                    setFlipped(prev => ({ ...prev, [shortName]: !prev[shortName] }));
-                                                    setRevealed(prev => ({ ...prev, [shortName]: true }));
-                                                }}
-                                            >
-                                                <div className="flip-inner">
-                                                    <img src="/Cards/back.jpg" className="flip-face flip-back" alt="card back" />
-                                                    <img src={cardImages[shortName]} className="flip-face flip-front" alt={name} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        )}
-
-                        {/* --- Right Column: Question + AI reading --- */}
-                        <div className="question-column">
-                            <ParchmentCard title={question && "Your Question Was:"}>
-                                {question || ` You actually did not ask anything! To ask a question, get a new reading `}
-                            </ParchmentCard>
-
-                            {question && (
-                                <ParchmentCard title="The Cards Reveal:">
-                                    {readingLoading && "The spirits are whispering... please wait."}
-                                    {readingError && `Hmm, something interfered with the reading: ${readingError}`}
-                                    {!readingLoading && !readingError && (reading || "No message came through this time.")}
-                                </ParchmentCard>
-                            )}
-                        </div>
-
-                    </div>
-
-                    {/* --- Navigation Buttons --- */}
-                    <MultiUseButton
-                        buttons={[
-                            { label: "Back to card spread", onClick: () => setView("grid") },
-                            { label: "Another Reading?", onClick: () => navigate("/Screens/TypeSelect") },
-                            { label: "Consult the full deck", onClick: () => navigate("/Screens/LazySusan") }
-                        ]}
-                    />
-                </div>
-            )}
-
-        </div>
-    );
+					<MultiUseButton
+						buttons={[
+							{ label: "Another Reading?", onClick: () => navigate("/Screens/TypeSelect") },
+							{ label: "See All Possible Cards", onClick: () => navigate("/Screens/LazySusan") }
+						]}
+					/>
+				</div>
+			</div>
+		);
 }
 
 export default FateReading;
