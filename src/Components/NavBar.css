@@ -13,6 +13,8 @@
 	align-items: center;
 	justify-content: center;
 
+  user-select: none;
+
   flex-wrap: nowrap;
   white-space: nowrap;
 
@@ -30,12 +32,10 @@
   position: relative;
   border: none;
   background: transparent;
-  cursor: pointer;
   padding: 0.2rem 0;
   font-size: 0.60rem;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  font-family: "Della Respira", serif;
   color: #C7A0FF; /* darker gray for non-active */
   transition:
     color 0.2s ease,
@@ -70,5 +70,4 @@
 .mystic-nav-separator {
   color: #777;
   opacity: 0.5;
-  user-select: none;
 }

@@ -1,0 +1,39 @@
+.mystic-toast-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%); /* start slightly above center */
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 200;
+}
+
+.mystic-toast-container.show {
+  opacity: 1;
+  transform: translate(-50%, -50%); /* centered */
+}
+
+.mystic-toast {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+
+  background: rgba(20, 5, 40, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  font-family: "Della Respira", serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: #EDE7F6;
+  text-shadow: 0 0 10px rgba(191, 159, 255, 0.6);
+
+  box-shadow:
+    0 0 18px rgba(150, 140, 255, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.8);
+
+  user-select: none;
+  white-space: nowrap;
+}
