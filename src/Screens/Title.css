@@ -52,7 +52,7 @@
   display: flex;                /* flex allows easy centering */
   justify-content: center;      /* horizontal center */
   width: 100%;                  /* full width of page */
-  margin-top: 117px;            /* experiment with this to set vertical height */
+  margin-top: 7.25rem;            /* experiment with this to set vertical height */
   /* or use padding-top/top if you prefer absolute positioning */
 }
 

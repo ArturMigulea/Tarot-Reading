@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
 const TABS = [
-  { label: "Home", path: "/" },
-  { label: "Choose Your Path", path: "/Screens/TypeSelect" },
+  { label: "Welcome", path: "/" },
+  { label: "Seeking", path: "/Screens/TypeSelect" },
   { label: "Fate Reading", path: "/Screens/FateReading" },
-  { label: "All Cards", path: "/Screens/LazySusan" },
+  { label: "Full Deck", path: "/Screens/LazySusan" },
 ];
 
 export default function NavBar() {
