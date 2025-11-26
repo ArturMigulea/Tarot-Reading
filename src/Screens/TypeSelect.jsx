@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './TypeSelect.css';
 
 import MultiUseButton from "../Components/MultiUseButton";
 import MysticToast from "../Components/MysticToast"; // <- make sure this path is correct
@@ -33,7 +34,7 @@ function TypeSelect() {
 
   return (
     <div className='ScreenContainer crystalBall-bg-img bg-img'>
-      <div>
+      <div className="question-block">
         <label htmlFor="userQuestion">Type In Your Question:</label>
         <input
           type="text"
@@ -42,6 +43,11 @@ function TypeSelect() {
           onChange={handleChange}
         />
       </div>
+
+      <p className="Explanation">When asking a tarot question, focus on what you truly want to understand
+        and let your curiosity lead the way. A one-card reading gives a quick,
+        sharp beam of insight on your situation, while a three-card spread deepens the story
+        by showing how your past, present, and future energies weave together to shape what comes next.</p>
 
       <MultiUseButton
         buttons={[
@@ -55,9 +61,6 @@ function TypeSelect() {
           }
         ]}
       />
-
-      <p>A one-card tarot reading provides a quick, focused insight into your question</p>
-      <p>While a three-card reading offers a deeper perspective by revealing how the past, present, and future interact to shape your fate.</p>
 
       {/* Toast lives here, at the root of the screen */}
       <MysticToast

@@ -111,6 +111,7 @@
 }
 
 .artist-credits {
+  font-style: bold;
   position: absolute;
   bottom: 25px;
   left: 25px;
