@@ -167,14 +167,16 @@ function FateReading() {
                             {question || `You did not ask a question. To ask one, get another reading.`}
                         </ParchmentCard>
 
-                        <ParchmentCard
-                            title="The Cards Reveal:"
-                            className={`reduced-padding fade-card ${showReading ? "visible" : ""}`}
-                        >
-                            {readingLoading && "The spirits are whispering... please wait."}
-                            {readingError && `Hmm, something interfered with the reading: ${readingError}`}
-                            {!readingLoading && !readingError && (reading || "No message came through this time.")}
-                        </ParchmentCard>
+                        {question && (
+                            <ParchmentCard
+                                title="The Cards Reveal:"
+                                className={`reduced-padding fade-card ${showReading ? "visible" : ""}`}
+                            >
+                                {readingLoading && "The spirits are whispering... please wait."}
+                                {readingError && `Hmm, something interfered with the reading: ${readingError}`}
+                                {!readingLoading && !readingError && (reading || "No message came through this time.")}
+                            </ParchmentCard>
+                        )}
                     </div>
                 </div>
 
