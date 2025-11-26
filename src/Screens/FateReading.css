@@ -1,6 +1,4 @@
 /* Overall layout container */
-
-/* TODO: Equally space cards along the screen, I dont know why it doesn't do that */
 .reading-grid {
   margin-top: 3.75rem;
   display: flex;
@@ -75,6 +73,7 @@
 .question-column {
   flex: 1;
   padding-top: 0rem;
+  text-align: center;
 }
 
 
