@@ -1,5 +1,6 @@
+// Components/NavBar.jsx
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";   // 👈 IMPORTANT
 import "./NavBar.css";
 
 const TABS = [
@@ -10,28 +11,34 @@ const TABS = [
 ];
 
 export default function NavBar() {
+  const location = useLocation();
+
   return (
     <div className="nav-bar-wrapper">
       <nav className="nav-bar">
-        {TABS.map((tab, index) => (
-          <React.Fragment key={tab.path}>
-            <NavLink
-              to={tab.path}
-              end={tab.path === "/"}
-              className={({ isActive }) =>
-                "nav-bar-item" +
-                (isActive ? " nav-bar-item--active" : "")
-              }
-            >
-              {tab.label}
-            </NavLink>
+        {TABS.map((tab, index) => {
+          // Decide if tab is active based on the current URL
+          const isActive =
+            tab.path === "/"
+              ? location.pathname === "/"
+              : location.pathname.startsWith(tab.path);
 
-            {/* Add separator except after last tab */}
-            {index < TABS.length - 1 && (
-              <div className="nav-bar-separator">—</div>
-            )}
-          </React.Fragment>
-        ))}
+          return (
+            <React.Fragment key={tab.path}>
+              <div
+                className={
+                  "nav-bar-item" + (isActive ? " nav-bar-item--active" : "")
+                }
+              >
+                {tab.label}
+              </div>
+
+              {index < TABS.length - 1 && (
+                <div className="nav-bar-separator nav-bar-item">—</div>
+              )}
+            </React.Fragment>
+          );
+        })}
       </nav>
     </div>
   );

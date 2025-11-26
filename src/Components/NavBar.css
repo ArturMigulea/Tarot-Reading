@@ -2,25 +2,22 @@
 
 .nav-bar-wrapper {
   position: fixed;
-  top: 16px;
+  margin-top: 15px;
+  right: 0;
   z-index: 100;
-
-	width: 100%;
-
-	display: flex;
-  justify-content: flex-end;
 }
 
 .nav-bar {
   margin-right: 1rem;  /* moves the nav bar left, away from right edge */
   display: inline-flex;
-	width: fit-content;
-	height: fit-content;
 	align-items: center;
 	justify-content: center;
 
+  flex-wrap: nowrap;
+  white-space: nowrap;
+
   gap: 0.50rem;
-  padding: 0.75% 1.5%;
+  padding: 0.5rem 1.5rem;
   border-radius: 99px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow:
@@ -56,15 +53,6 @@
   background: linear-gradient(90deg, #C7A0FF, #3A8A85);
   transform: translateX(-50%);
   transition: width 0.2s ease;
-}
-
-.nav-bar-item:hover {
-  color: #3A8A85;
-  transform: translateY(-1px);
-}
-
-.nav-bar-item:hover::after {
-  width: 80%;
 }
 
 /* ACTIVE: lighter gray + bigger */

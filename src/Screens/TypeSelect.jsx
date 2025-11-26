@@ -28,8 +28,8 @@ function TypeSelect() {
                     onChange={handleChange} // Call handleChange when the input value changes
                 />
             </div>
+
             {/* onClick={() => handleNext(1)} Waits until the button is actually clicked */}
-            {/* Either pass 1 card or 3 cards to the next screen */}
 
             <MultiUseButton
                 buttons={[

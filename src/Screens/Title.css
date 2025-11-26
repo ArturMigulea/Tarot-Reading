@@ -1,34 +1,3 @@
-.ScreenContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-
-  min-height: 100vh;            /* ensures full-screen minimum */
-  box-sizing: border-box;
-  padding-top: 2rem;            /* nice breathing room from the top */
-}
-
-.bg-img {
-  width: 100vw;   /* 100% of viewport width */
-  min-height: 100vh;  /* 100% of viewport height */
-  background-size: cover;      /* fill the screen */
-  background-position: center; /* center image */
-  background-repeat: no-repeat;
-}
-
-.gypsy-bg-img {
-  background-image: url('/NoBackgroundGypsyLady.png');
-  background-size: 65%;   /* zoom in */
-  background-position: center bottom;          
-}
-
-
-.crystalBall-bg-img {
-  background-image: url('/CrystalBall.jpg');
-}
-
 .curved-heading {
   font-family: "Tangerine", serif;
   fill: #EDE7F6;         /* text color */
