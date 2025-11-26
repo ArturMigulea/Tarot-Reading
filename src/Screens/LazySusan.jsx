@@ -44,9 +44,11 @@ function LazySusan() {
 
                 <div className="lazy-susan-wheel">
                     {shortNames.map((name, index) => {
-                        // compute angle so selected card is at bottom
                         const offset = (index - selectedIndex + cardCount) % cardCount;
-                        const angle = Math.PI + offset * angleStep; // start at bottom
+                        
+                        // Fix: angle starts at bottom
+                        const angle = offset * angleStep;
+
 
                         const x = radiusX * Math.sin(angle);
                         const y = radiusY * Math.cos(angle);
