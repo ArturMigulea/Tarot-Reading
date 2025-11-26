@@ -69,12 +69,26 @@
   box-sizing: border-box;
 }
 
-/* right column (the big parchment) */
+
 .question-column {
   flex: 1;
   padding-top: 0rem;
   text-align: center;
+  width: 1000px;            /* FIXED width representing the maximum allowed space */
+  max-width: 90%;          /* responsive fallback for smaller screens */
+  min-width: 300px;        /* optional: don’t shrink too much on tiny screens */
+  
+  text-align: center;      /* center the text inside */
+  border: 2px solid red;   /* temporary border showing allowed space */
+  padding: 1rem;           /* inner spacing so text doesn’t touch border */
+  margin: 0 auto;          /* center the box itself horizontally */
+  box-sizing: border-box;  /* include padding in width calculation */
+  
+  overflow-wrap: break-word; /* ensures long words wrap */
+  /* max-height: 300px;     /* adjust as needed */
+  /* overflow-y: auto;      scroll inside if text is too long */ */
 }
+
 
 
 /* --- CARD FLIP ANIMATION --- */
