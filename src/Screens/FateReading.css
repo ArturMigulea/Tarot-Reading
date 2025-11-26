@@ -79,7 +79,7 @@
   min-width: 300px;        /* optional: don’t shrink too much on tiny screens */
   
   text-align: center;      /* center the text inside */
-  border: 2px solid red;   /* temporary border showing allowed space */
+  /* border: 2px solid red;   temporary border showing allowed space */
   padding: 1rem;           /* inner spacing so text doesn’t touch border */
   margin: 0 auto;          /* center the box itself horizontally */
   box-sizing: border-box;  /* include padding in width calculation */
