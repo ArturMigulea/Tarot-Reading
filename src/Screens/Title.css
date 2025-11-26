@@ -46,9 +46,11 @@
   box-shadow: 0 8px 20px rgba(199, 160, 255, 0.5);
 }
 
-/* Remove the white pill container ONLY on this page */
+/* Remove the pill container ONLY on this page */
 .button-wrapper .reading-actions {
-  background: transparent;  /* removes the white background */
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
 }
 
 /* Container fixed to bottom-right */
