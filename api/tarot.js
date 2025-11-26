@@ -54,10 +54,7 @@ Guidelines:
 - Then interpret how they relate to the user's question.
 - If there is advice, phrase it as gentle guidance, not absolute destiny.
 - Keep it a maximum of 3 sentances.
-- If the user provides anything that does not follow the normal structure of a question (like, jiberish,
-or just punctuation, or just one single word, or not a coherent question, etc.),
-then adresse that explicitly instead of giving advice, hint to inviting the user to ask a better question
-`;
+- If the user provides anything that does not follow the normal structure of a question (like, jiberish, or just punctuation, or just one single word, or not a coherent question, etc.), then adresse that explicitly instead of giving advice, hint to inviting the user to ask a better question`;
 
     const userPrompt = `
 User question:
