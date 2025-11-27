@@ -1,4 +1,14 @@
+/* Container for this page only */
+.ScreenContainer.title-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
 .curved-heading {
+  position: relative;
+  top: 0vh;          /* fixed distance from top */
   font-family: "Tangerine", serif;
   fill: #EDE7F6;         /* text color */
   font-weight: 900;        /* bold hero effect */
@@ -10,19 +20,33 @@
 
 .curved-heading svg {
   display: block;
-  width: 90%;              /* fill most of the page width */
-  height: auto;            /* keep aspect ratio */
-  margin: 0 auto;          /* center horizontally */
-  overflow: visible;       /* prevent clipping */
+  width: 80%;         /* scales with screen width */
+  max-width: 800px;
+  height: auto;
+  margin: -40px auto -140px auto; /* negative top margin to pull text up */
+  overflow: visible;
 }
 
-/* Wrapper for this page only */
+/* Image wrapper for positioning the button */
+.gypsy-image-wrapper {
+  position: relative;   /* button will be absolute inside */
+  width: 100%;
+  max-width: 900px;     /* change image size */
+  margin: 0 auto;
+  margin-top: 0vh;     /* push image lower */
+}
+
+.gypsy-image-wrapper .gypsy-img {
+  width: 100%;
+  display: block;
+}
+
+/* Button over the orb */
 .button-wrapper {
-  display: flex;                /* flex allows easy centering */
-  justify-content: center;      /* horizontal center */
-  width: 100%;                  /* full width of page */
-  margin-top: 4.50rem;            /* experiment with this to set vertical height */
-  /* or use padding-top/top if you prefer absolute positioning */
+  position: absolute;
+  top: 58%;    /* adjust Y to match orb */
+  left: 50%;   /* adjust X to match orb */
+  transform: translate(-50%, -50%);
 }
 
 /* Style the button inside this wrapper */
@@ -48,7 +72,7 @@
 
 /* Remove the pill container ONLY on this page */
 .button-wrapper .reading-actions {
-  background: transparent;
+  background: transparent;  /* removes the white background */
   backdrop-filter: none;
   border: none;
 }

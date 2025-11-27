@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import './Title.css';
 
 import MultiUseButton from "../Components/MultiUseButton";
@@ -7,23 +7,30 @@ function Title() {
     const navigate = useNavigate();
 
     return (
-        <div className='ScreenContainer gypsy-bg-img bg-img'>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}>
-                <h1 className="curved-heading"> {/* Source - https://stackoverflow.com/a - Posted by Phrog
-                - Retrieved 2025-11-23, License - CC BY-SA 2.5 */}
-                    <svg width="800" height="300" viewBox="0 0 100 50">
-                        <defs>
-                            <path id="curve" d="M5 35 C20 5 80 5 95 35" />
-                        </defs>
+        <div className='ScreenContainer title-page'>
             
-                        <text>
-                            <textPath href="#curve" startOffset="50%" textAnchor="middle">
+            {/* Curved heading stays at the top */}
+            <h1 className="curved-heading">
+                <svg width="800" height="300" viewBox="0 0 100 50">
+                    <defs>
+                        <path id="curve" d="M5 35 C20 5 80 5 95 35" />
+                    </defs>
+                    <text>
+                        <textPath href="#curve" startOffset="50%" textAnchor="middle">
                             Ready to Read Your Fate?
-                            </textPath>
-                         </text>
-                    </svg>
-                </h1>
+                        </textPath>
+                    </text>
+                </svg>
+            </h1>
 
+            {/* Gypsy image wrapper */}
+            <div className="gypsy-image-wrapper">
+                <img 
+                    src={`../NoBackgroundGypsyLady.png`} 
+                    className="gypsy-img" 
+                    alt="gypsy" 
+                />
+                
                 <div className="button-wrapper">
                     <MultiUseButton
                         buttons={[
@@ -34,8 +41,10 @@ function Title() {
                         ]}
                     />
                 </div>
-                 <p className='artist-credits' > Artist Credits: Megan Lynn Kott and Corina Migulea</p>
-                </div>
+            </div>
+
+            <p className='artist-credits'>Artist Credits: Megan Lynn Kott and Corina Migulea</p>
+
             <div className="info-button-wrapper">
                 <div className="info-icon">i</div>
                 <div className="info-tooltip">
@@ -48,4 +57,5 @@ function Title() {
     )
 }
 
-export default Title
+export default Title;
+
