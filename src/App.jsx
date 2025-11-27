@@ -5,11 +5,13 @@ import TypeSelect from "./Screens/TypeSelect";
 import FateReading from "./Screens/FateReading";
 import LazySusan from "./Screens/LazySusan";
 import NavBar from "./Components/NavBar";
+import ProfileButton from './Components/ProfileButton';
 
 export default function App() {
   return (
     <Router>
       <div className="app-root">
+        <ProfileButton />
         <NavBar />
 
         <main className="screen-container">

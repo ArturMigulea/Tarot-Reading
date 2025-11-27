@@ -51,7 +51,7 @@ export default async function handler(req, res) {
     Step 1: Validate user question.
     Analyze the user question.
     If it is less than 3 words, or contains mostly gibberish or punctuation, or lacks a clear subject/verb,
-    adresse that it's not a god question and explicitly invit the user to ask a better question
+    adresse that it's not a god question and explicitly invite the user to ask a better question
     Examples of invalid questions:
     - "asdf"
     - "!!!"
