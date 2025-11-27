@@ -121,7 +121,7 @@ export default function ProfileButton() {
 							</div>
               <MultiUseButton
                   buttons={[
-                      { label: "See Users Question History", onClick: () => {
+                      { label: "Question History", onClick: () => {
                         setOpen(false);
                         navigate("../Screens/History"); 
                       }},
@@ -208,7 +208,7 @@ export default function ProfileButton() {
               {/* Toggle between sign in <-> sign up */}
               <MultiUseButton
                   buttons={[
-                    { label: mode === "signin" ? "Create an account" : "Already have an account?", 
+                    { label: mode === "signin" ? "Create an Account" : "Already have an account?", 
                       onClick: () => setMode(mode === "signin" ? "signup" : "signin")
                     }
                   ]}
