@@ -7,6 +7,8 @@ import LazySusan from "./Screens/LazySusan";
 import NavBar from "./Components/NavBar";
 import ProfileButton from './Components/ProfileButton';
 
+import QuestionHistory from "./Screens/QuestionHistory";
+
 export default function App() {
   return (
     <Router>
@@ -20,6 +22,7 @@ export default function App() {
             <Route path="/Screens/TypeSelect" element={<TypeSelect />} />
             <Route path="/Screens/FateReading" element={<FateReading />} />
             <Route path="/Screens/LazySusan" element={<LazySusan />} />
+            <Route path="/Screens/History" element={<QuestionHistory />} />
           </Routes>
         </main>
       </div>

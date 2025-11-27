@@ -10,6 +10,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 
+import { useNavigate } from "react-router-dom";
+
 export default function ProfileButton() {
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
@@ -22,6 +24,8 @@ export default function ProfileButton() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const [error, setError] = useState("");
+
+	const navigate = useNavigate();
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (firebaseUser) => {
@@ -110,18 +114,29 @@ export default function ProfileButton() {
       {/* Dropdown menu */}
       {open && (
         <div className="profile-menu">
-          {user ? (
-            <>
-              <div className="profile-info">
-                <strong>{user.displayName || "User"}</strong>
-                <div className="profile-email">{user.email}</div>
-              </div>
+					{user ? (
+						<>
+							<div className="profile-info">
+								<strong>{user.displayName || "User"}</strong>
+								<div className="profile-email">{user.email}</div>
+							</div>
 
-              <button className="profile-action-button" onClick={handleLogout}>
-                Log out
-              </button>
-            </>
-          ) : (
+							<button
+								className="profile-action-button"
+								onClick={() => {
+									setOpen(false);
+									navigate("../Screens/History");
+								}}
+								style={{ marginBottom: "6px" }}
+							>
+								My Questions
+							</button>
+
+							<button className="profile-action-button" onClick={handleLogout}>
+								Log out
+							</button>
+						</>
+					) : (
             <>
               <h3 style={{ marginBottom: "8px" }}>
                 {mode === "signin" ? "Sign In" : "Sign Up"}

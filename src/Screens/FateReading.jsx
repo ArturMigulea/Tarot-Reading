@@ -185,5 +185,4 @@ function FateReading() {
     );
 }
 
-// ---- Default export (Fast Refresh compatible) ----
 export default FateReading;
