@@ -171,7 +171,7 @@ function FateReading() {
                                     onClick={() => setFlipped(prev => ({ ...prev, [shortName]: !prev[shortName] }))}
                                 >
                                     <div className="flip-inner">
-                                        <img src="/Cards/back.jpg" className="flip-face flip-back" alt="card back" />
+                                        <img src="/cardback.jpg" className="flip-face flip-back" alt="card back" />
                                         <img src={cardImages[shortName]} className="flip-face flip-front" alt={name} />
                                     </div>
                                 </div>
