@@ -21,13 +21,13 @@
 
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(7, 12, 24, 0.9);
+  background: transparent;
   box-shadow:
     0 0 18px rgba(150, 140, 255, 0.4),
     0 8px 24px rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(14px);
 
-  color: #C7A0FF;
+  color: #EDE7F6;
   font-family: var(--font-body);
   letter-spacing: 0.10em;
   text-transform: uppercase;

@@ -20,12 +20,6 @@
 
   gap: 0.50rem;
   padding: 0.5rem 1.5rem;
-  border-radius: 99px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow:
-    0 0 18px rgba(150, 140, 255, 0.4),
-    0 8px 24px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(14px);
 }
 
 .nav-bar-item {
@@ -50,7 +44,7 @@
   bottom: -0.2rem;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #C7A0FF, #3A8A85);
+  /* background: linear-gradient(90deg, #C7A0FF, #3A8A85); optional underline */
   transform: translateX(-50%);
   transition: width 0.2s ease;
 }
