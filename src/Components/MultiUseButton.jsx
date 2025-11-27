@@ -21,7 +21,11 @@ export default function MultiUseButton({
                 {/* Fragments allow you to group different compoenents without the need to group in a <div> */}
                 return (
                     <React.Fragment key={index}>
-                        <button className="action-btn" onClick={handleClick}>
+                        <button 
+                            className="action-btn"
+                            type={btn.type || "button"} 
+                            onClick={handleClick}
+                        >
                             {btn.label}
                         </button>
 

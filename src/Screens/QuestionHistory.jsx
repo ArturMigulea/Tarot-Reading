@@ -14,7 +14,9 @@ import { useNavigate } from "react-router-dom";
 
 import MultiUseButton from "../Components/MultiUseButton";
 
-export default function QuestionHistory() {
+import "./QuestionHistory.css"
+
+function QuestionHistory() {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -86,13 +88,20 @@ export default function QuestionHistory() {
         <div className="history-card">
           <h1>My Question History</h1>
           <p>You need to be signed in to see your past questions.</p>
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+            <MultiUseButton
+              buttons={[
+                { label: "Home", onClick: () => navigate("/") }
+              ]}
+            />
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="history-page">
+    <div className="history-page ScreenContainer crystalBall-bg-img bg-img">
       <div className="history-card">
         <h1>My Question History</h1>
 
@@ -136,3 +145,5 @@ export default function QuestionHistory() {
     </div>
   );
 }
+
+export default QuestionHistory;

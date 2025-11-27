@@ -8,6 +8,7 @@ const TABS = [
   { label: "Seeking", path: "/Screens/TypeSelect" },
   { label: "Purr-Diction", path: "/Screens/FateReading" },
   { label: "Card Cat-alogue", path: "/Screens/LazySusan" },
+  { label: "History", path: "/Screens/History" },
 ];
 
 export default function NavBar() {

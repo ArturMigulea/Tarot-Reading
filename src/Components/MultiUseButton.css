@@ -23,7 +23,7 @@
   background: transparent;  /* so container shows through */
   padding: 0.6rem 1.4rem;
   border-radius: 999px;           /* circle shape */
-  font-family: "Della Respira", serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   letter-spacing: 0.08em;
   color: #EDE7F6;

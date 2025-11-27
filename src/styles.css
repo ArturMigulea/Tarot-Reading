@@ -9,6 +9,9 @@
   /* Text */
   --text-colour-primary:   #EDE7F6;
   --text-colour-secondary: #B3B3B3;
+
+  --font-body: "Della Respira";
+  --font-title: "Tangerine";
 }
 
 /* Base */

@@ -1,4 +1,3 @@
-// src/Components/ProfileButton.jsx
 import { useEffect, useState } from "react";
 import { auth, googleProvider } from "../firebase";
 import {
@@ -11,6 +10,10 @@ import {
 } from "firebase/auth";
 
 import { useNavigate } from "react-router-dom";
+
+import MultiUseButton from "./MultiUseButton";
+
+import "./ProfileButton.css";
 
 export default function ProfileButton() {
   const [user, setUser] = useState(null);
@@ -102,13 +105,9 @@ export default function ProfileButton() {
     <div className="profile-wrapper">
       {/* Profile circle */}
       <button className="profile-button" onClick={toggleOpen}>
-        {user?.photoURL ? (
-          <img src={user.photoURL} alt="profile" />
-        ) : (
           <span className="profile-initial">
-            {user?.displayName?.[0] || "?"}
+            {user?.displayName || "Profile"}
           </span>
-        )}
       </button>
 
       {/* Dropdown menu */}
@@ -120,25 +119,19 @@ export default function ProfileButton() {
 								<strong>{user.displayName || "User"}</strong>
 								<div className="profile-email">{user.email}</div>
 							</div>
-
-							<button
-								className="profile-action-button"
-								onClick={() => {
-									setOpen(false);
-									navigate("../Screens/History");
-								}}
-								style={{ marginBottom: "6px" }}
-							>
-								My Questions
-							</button>
-
-							<button className="profile-action-button" onClick={handleLogout}>
-								Log out
-							</button>
+              <MultiUseButton
+                  buttons={[
+                      { label: "See Users Question History", onClick: () => {
+                        setOpen(false);
+                        navigate("../Screens/History"); 
+                      }},
+                      { label: "Logout", onClick: () => handleLogout() }
+                  ]}
+              />
 						</>
 					) : (
             <>
-              <h3 style={{ marginBottom: "8px" }}>
+              <h3>
                 {mode === "signin" ? "Sign In" : "Sign Up"}
               </h3>
 
@@ -161,9 +154,13 @@ export default function ProfileButton() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <button className="profile-action-button" type="submit">
-                    Sign In
-                  </button>
+                    <MultiUseButton
+                      buttons={[
+                        { label: "Sign In", 
+                          type: "submit",
+                        }
+                      ]}
+                  />
                 </form>
               )}
 
@@ -198,32 +195,34 @@ export default function ProfileButton() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                   />
-                  <button className="profile-action-button" type="submit">
-                    Sign Up
-                  </button>
+                  <MultiUseButton
+                      buttons={[
+                        { label: "Sign Up", 
+                          type: "submit",
+                        }
+                      ]}
+                  />
                 </form>
               )}
 
               {/* Toggle between sign in <-> sign up */}
-              <button
-                className="profile-alt-button"
-                onClick={() =>
-                  setMode(mode === "signin" ? "signup" : "signin")
-                }
-              >
-                {mode === "signin"
-                  ? "Create an account"
-                  : "Already have an account?"}
-              </button>
+              <MultiUseButton
+                  buttons={[
+                    { label: mode === "signin" ? "Create an account" : "Already have an account?", 
+                      onClick: () => setMode(mode === "signin" ? "signup" : "signin")
+                    }
+                  ]}
+              />
 
               <div className="auth-divider">or</div>
 
-              <button
-                className="profile-action-button"
-                onClick={handleGoogleSignIn}
-              >
-                Continue with Google
-              </button>
+              <MultiUseButton
+                  buttons={[
+                    { label: "Continue with Google", 
+                      onClick: () => handleGoogleSignIn()
+                    }
+                  ]}
+              />
             </>
           )}
         </div>
