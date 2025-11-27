@@ -1,6 +1,9 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import { auth, db } from "../firebase";
+import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+
 import MultiUseButton from "../Components/MultiUseButton";
 import './FateReading.css';
 
@@ -78,36 +81,61 @@ function FateReading() {
     useEffect(() => {
         if (!data?.cards || randomCards.length === 0 || hasRequestedReading) return;
 
-        const effectiveQuestion = question || "Give a general tarot fate reading based on these cards.";
-        const cardsForApi = randomCards.map(shortName => {
-            const card = data.cards.find(c => c.name_short === shortName);
-            return { name: card?.name || shortName, reversed: false, position: undefined };
-        });
-
         const fetchReading = async () => {
             try {
-                setReadingLoading(true);
-                setReadingError(null);
+            setReadingLoading(true);
+            setReadingError(null);
 
-                const res = await fetch("/api/tarot", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ question: effectiveQuestion, cards: cardsForApi })
-                });
+            const effectiveQuestion =
+                question || "Give a general tarot fate reading based on these cards.";
 
-                if (!res.ok) {
-                    const errData = await res.json().catch(() => ({}));
-                    throw new Error(errData.details || errData.error || "Request failed");
-                }
+            // Fetch last 5 questions from Firestore
+            let questionHistory = [];
+            const user = auth.currentUser;
 
-                const dataJson = await res.json();
-                setReading(dataJson.interpretation || "");
-                setHasRequestedReading(true);
+            if (user) {
+                const q = query(
+                collection(db, "users", user.uid, "QuestionHistory"),
+                orderBy("createdAt", "desc"),
+                limit(5)
+                );
+
+                const snap = await getDocs(q);
+                questionHistory = snap.docs.map(doc => doc.data().question);
+            }
+
+            // Build cardsForApi
+            const cardsForApi = randomCards.map(shortName => {
+                const card = data.cards.find(c => c.name_short === shortName);
+                return { name: card?.name || shortName, reversed: false };
+            });
+
+            // Call API
+            const res = await fetch("/api/tarot", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                question: effectiveQuestion,
+                cards: cardsForApi,
+                history: questionHistory,
+                }),
+            });
+
+            // Handle response
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
+                throw new Error(errData.details || errData.error || "Request failed");
+            }
+
+            const dataJson = await res.json();
+            setReading(dataJson.interpretation || "");
+            setHasRequestedReading(true);
+
             } catch (err) {
-                console.error(err);
-                setReadingError(err.message || "Something went wrong");
+            console.error(err);
+            setReadingError(err.message || "Something went wrong");
             } finally {
-                setReadingLoading(false);
+            setReadingLoading(false);
             }
         };
 

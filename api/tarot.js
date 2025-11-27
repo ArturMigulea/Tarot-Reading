@@ -22,17 +22,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { cards, question } = req.body || {};
+    const { cards, question, history } = req.body || {};
 
     if (!cards || !Array.isArray(cards) || cards.length === 0) {
       res.status(400).json({ error: "cards[] are required" });
       return;
     }
 
-    const safeQuestion =
-      question && question.trim().length > 0
-        ? question
-        : "Give a general tarot fate reading based only on these cards.";
+  const safeQuestion =
+  question && question.trim().length > 0
+    ? question
+    : "Give a general tarot fate reading based only on these cards.";
 
     const cardList = cards
       .map(
@@ -43,10 +43,31 @@ export default async function handler(req, res) {
       )
       .join("\n");
 
+    // Build history section for the prompt (optional)
+    let historySection = "";
+    if (Array.isArray(history) && history.length > 0) {
+      const limitedHistory = history.slice(0, 5); // last 5 questions max
+      const historyList = limitedHistory
+        .map((q, idx) => `${idx + 1}. ${q}`)
+        .join("\n");
+
+      historySection = `
+    Previous questions from this same querent (most recent first):
+    ${historyList}
+
+    Use these only to notice recurring themes or emotional patterns.
+    Do NOT answer those old questions directly; only use them as background context.
+    `;
+    }
+
     const systemPrompt = `
     You are a mystical but kind-hearted gypsy-style tarot reader.
     You speak in a warm, narrative way, but you are also clear and grounded.
     You read fate and possibilities from the cards but avoid giving medical, legal or financial advice.
+
+    If previous questions are provided, treat them as background:
+    - Look for repeated worries, themes, or emotional patterns.
+    - Reflect gently on these patterns, but do not re-answer old questions directly.
 
     Step 1: Validate user question.
     Analyze the user question.
@@ -76,11 +97,11 @@ User question:
 
 Cards drawn (${cards.length}):
 ${cardList}
+${historySection}
 
 Please give an interpretation.
 `;
 
-    // ✅ Use Chat Completions API (simple, stable)
     const completion = await client.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
