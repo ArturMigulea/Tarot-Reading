@@ -1,72 +1,107 @@
-/* Center the wheel horizontally and vertically */
+/* ---------------- Wrapper & Container ---------------- */
+.ScreenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* keep horizontal centering */
+  justify-content: flex-start; /* stack from top */
+  width: 100%;
+  padding-top: 5rem; /* optional spacing from top */
+}
+
 .lazy-susan-wrapper {
-    position: relative;
-    width: 900px;
-    height: 360px;
-    margin: 40px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 900px;  /* can be adjusted for responsiveness */
+  height: 360px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red; /* optional debug */
 }
 
+/* ---------------- Wheel ---------------- */
 .lazy-susan-wheel {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* wheel itself doesn’t block drag */
+  z-index: 1;
+  /* optional debug */
+  /* background: rgba(0, 255, 0, 0.1); */
 }
 
-/* Cards positioned relative to wheel center */
+/* ---------------- Cards ---------------- */
 .lazy-susan-card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: center center;
-    transition: transform 0.5s ease, opacity 0.5s ease, z-index 0.5s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  transition: transform 0.4s ease, opacity 0.4s ease, z-index 0.4s ease;
+  will-change: transform, opacity;
 }
 
 .lazy-susan-card img {
-    width: 90px;
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: transform 0.5s ease, filter 0.5s ease;
+  width: 90px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
-.lazy-susan-card.selected img {
-    transform: scale(1.3);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
-    filter: brightness(1.1);
-}
-
+/* Faded effect for non-selected cards */
 .lazy-susan-card.faded img {
-    transform: scale(1);
-    filter: brightness(0.85);
+  filter: brightness(0.85);
 }
 
-/* Arrows */
+/* ---------------- Arrows ---------------- */
 .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(197,168,128,0.9);
-    border: none;
-    font-size: 32px;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 20;
-    user-select: none;
-    transition: background 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(197,168,128,0.9);
+  border: none;
+  font-size: 32px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  user-select: none;
+  transition: background 0.3s ease;
 }
 
 .arrow:hover {
-    background-color: rgba(180,140,102,0.9);
+  background-color: rgba(180,140,102,0.9);
 }
 
 .arrow.left {
-    left: -60px;
+  left: -60px; /* adjust as needed */
 }
 
 .arrow.right {
-    right: -60px;
+  right: -60px; /* adjust as needed */
 }
+
+/* ---------------- Drag Overlay ---------------- */
+.lazy-susan-drag-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none; /* prevents default scrolling on mobile */
+  z-index: 5; /* above wheel, below arrows/buttons */
+}
+
+/* ---------------- Type Select Button ---------------- */
+.MultiUseButton {
+  position: relative;
+  z-index: 30; /* above overlay and wheel */
+  margin-top: 8rem; /* adjust distance below wheel */
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------------- Debug / Optional ---------------- */
+/* Remove these once centering is verified */
+.lazy-susan-wrapper { border: 1px solid red; }
+.lazy-susan-wheel { /* background: rgba(0,255,0,0.1); */ }
