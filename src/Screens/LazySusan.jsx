@@ -144,7 +144,7 @@ function LazySusan() {
       <MultiUseButton
         className="MultiUseButton"
         buttons={[
-          { label: "Type Select", onClick: () => navigate('/Screens/TypeSelect') }
+          { label: "Do Another Purr-Diction", onClick: () => navigate("/") }
         ]}
       />
     </div>
