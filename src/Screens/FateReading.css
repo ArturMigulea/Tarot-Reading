@@ -86,7 +86,7 @@
   
   overflow-wrap: break-word; /* ensures long words wrap */
   /* max-height: 300px;     /* adjust as needed */
-  /* overflow-y: auto;      scroll inside if text is too long */ */
+  /* overflow-y: auto;      scroll inside if text is too long */
 }
 
 

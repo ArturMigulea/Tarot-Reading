@@ -118,18 +118,14 @@ function FateReading() {
     useEffect(() => {
         if (!randomCards.length) return;
 
-        randomCards.forEach((shortName, index) => {
-            setTimeout(() => {
-                setFlipped(prev => ({ ...prev, [shortName]: true }));
-                setRevealed(prev => ({ ...prev, [shortName]: true }));
+        const allFlipped = randomCards.every(shortName => flipped[shortName]);
 
-                if (index === randomCards.length - 1) {
-                    setTimeout(() => setShowQuestion(true), 500);
-                    setTimeout(() => setShowReading(true), 1000);
-                }
-            }, 600 * (index + 1));
-        });
-    }, [randomCards]);
+        if (allFlipped) {
+            setTimeout(() => setShowQuestion(true), 500);
+            setTimeout(() => setShowReading(true), 1000);
+
+        }
+    }, [flipped, randomCards]);
 
     // ---- JSX return ----
     return (
