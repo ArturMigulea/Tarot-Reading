@@ -1,3 +1,8 @@
+.instructions {
+  margin-bottom: 6vh;
+  font-style: italic;
+}
+
 /* ---------------- Wrapper & Container ---------------- */
 .ScreenContainer {
   display: flex;
@@ -16,7 +21,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid red; /* optional debug */
+  margin-bottom: 2vh
+  /* border: 1px solid red; optional debug */
 }
 
 /* ---------------- Wheel ---------------- */
@@ -57,7 +63,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(197,168,128,0.9);
+  color: #EDE7F6;
+  background-color: transparent;
   border: none;
   font-size: 32px;
   padding: 10px 15px;
@@ -69,7 +76,7 @@
 }
 
 .arrow:hover {
-  background-color: rgba(180,140,102,0.9);
+  background-color: #3B1E4A;
 }
 
 .arrow.left {

@@ -84,6 +84,10 @@ function LazySusan() {
 
   return (
     <div className='ScreenContainer crystalBall-bg-img bg-img'>
+      <div>
+        <h1>Cat-alogue</h1>
+        <p className="instructions">Drag your mouse across the deck to shuffle or use the arrows on-screen to flip through cards.</p>
+      </div>
       <div className="lazy-susan-wrapper">
         {/* Left arrow */}
         <button className="arrow left" onClick={rotateLeft}>⟲</button>
@@ -144,7 +148,7 @@ function LazySusan() {
       <MultiUseButton
         className="MultiUseButton"
         buttons={[
-          { label: "Do Another Purr-Diction", onClick: () => navigate("/") }
+          { label: "Do Another Purr-diction", onClick: () => navigate("/") }
         ]}
       />
     </div>
