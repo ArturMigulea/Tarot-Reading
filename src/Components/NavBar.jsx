@@ -6,8 +6,8 @@ import "./NavBar.css";
 const TABS = [
   { label: "Welcome", path: "/" },
   { label: "Seeking", path: "/Screens/TypeSelect" },
-  { label: "Fate Reading", path: "/Screens/FateReading" },
-  { label: "Full Deck", path: "/Screens/LazySusan" },
+  { label: "Purr-Diction", path: "/Screens/FateReading" },
+  { label: "Card Cat-alogue", path: "/Screens/LazySusan" },
 ];
 
 export default function NavBar() {
