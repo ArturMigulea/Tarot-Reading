@@ -1,6 +1,6 @@
 /* Overall layout container */
 .reading-grid {
-  margin-top: 3.75rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,12 +28,6 @@
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-/* Reduce padding inside parchment cards to increase visual spacing */
-.parchment-card.reduced-padding {
-    padding-top: 1rem !important;
-    padding-bottom: 0rem !important;
 }
 
 .fade-section {
@@ -67,8 +61,8 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  padding-bottom: 2rem;
 }
-
 
 .question-column {
   flex: 1;
@@ -86,7 +80,7 @@
   
   overflow-wrap: break-word; /* ensures long words wrap */
   /* max-height: 300px;     /* adjust as needed */
-  /* overflow-y: auto;      scroll inside if text is too long */ */
+  /* overflow-y: auto;      scroll inside if text is too long */
 }
 
 

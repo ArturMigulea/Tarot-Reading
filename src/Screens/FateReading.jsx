@@ -180,8 +180,8 @@ function FateReading() {
 
                 <MultiUseButton
                     buttons={[
-                        { label: "Another Reading?", onClick: () => navigate("/") },
-                        { label: "See All Possible Cards", onClick: () => navigate("/Screens/LazySusan") }
+                        { label: "Do Another Purr-Diction", onClick: () => navigate("/") },
+                        { label: "Consult the Card Cat-alogue", onClick: () => navigate("/Screens/LazySusan") }
                     ]}
                 />
             </div>
