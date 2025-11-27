@@ -44,15 +44,15 @@
 /* Button over the orb */
 .button-wrapper {
   position: absolute;
-  top: 58%;    /* adjust Y to match orb */
+  top: 59%;    /* adjust Y to match orb */
   left: 50%;   /* adjust X to match orb */
   transform: translate(-50%, -50%);
 }
 
 /* Style the button inside this wrapper */
 .button-wrapper .action-btn {
-  width: 100px;                  /* button diameter */
-  height: 100px;
+  width: 90px;                  /* button diameter */
+  height: 90px;
   border-radius: 50%;           /* circle shape */
   background: #9b6eff;
   color: #EDE7F6;
