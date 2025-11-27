@@ -2,9 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TypeSelect.css';
 
-import { auth, db } from "../firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-
 import MultiUseButton from "../Components/MultiUseButton";
 import MysticToast from "../Components/MysticToast"; // <- make sure this path is correct
 
@@ -27,24 +24,6 @@ function TypeSelect() {
     if (!u_Question.trim()) {
       setToastVisible(true);
       return;
-    }
-
-    
-    // Try to save to Firestore if user is logged in
-    const user = auth.currentUser;
-    if (user) {
-      try {
-        await addDoc(
-          collection(db, "users", user.uid, "QuestionHistory"),
-          {
-            question: u_Question.trim(),
-            createdAt: serverTimestamp(),
-          }
-        );
-      } catch (err) {
-        console.error("Failed to save QuestionHistory:", err);
-        // you could optionally show a toast here too
-      }
     }
 
     // Question exists → proceed

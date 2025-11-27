@@ -112,14 +112,53 @@ function QuestionHistory() {
             {questions.map((entry) => {
               const createdAt =
                 entry.createdAt?.toDate?.().toLocaleString() ?? "Unknown time";
+
+              const hasCards = Array.isArray(entry.cards) && entry.cards.length > 0;
+              const hasInterpretation = !!entry.interpretation;
+
               return (
                 <li key={entry.id} className="history-item">
                   <div className="history-item-main">
                     <div>
+                      {/* Question */}
                       <div className="history-question">
                         {entry.question || <em>(No question text)</em>}
                       </div>
+
+                      {/* Timestamp */}
                       <div className="history-meta">{createdAt}</div>
+
+                      {/* Cards drawn */}
+                      {hasCards && (
+                        <div className="history-cards-section">
+                          <div className="history-section-title">Cards drawn:</div>
+                          <div className="history-cards-row">
+                            {entry.cards.map((card, idx) => (
+                              <div key={idx} className="history-card-pill">
+                                <img
+                                  src={`/Cards/${card.shortName}.jpg`}
+                                  alt={card.name || card.shortName}
+                                  className="history-card-thumb"
+                                />
+                                <span className="history-card-name">
+                                  {card.name || card.shortName}
+                                  {card.reversed ? " (reversed)" : ""}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Interpretation */}
+                      {hasInterpretation && (
+                        <div className="history-interpretation-section">
+                          <div className="history-section-title">Interpretation:</div>
+                          <p className="history-interpretation">
+                            {entry.interpretation}
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     <button
@@ -134,6 +173,7 @@ function QuestionHistory() {
             })}
           </ul>
         )}
+
         <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
           <MultiUseButton
             buttons={[

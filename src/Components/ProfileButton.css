@@ -27,8 +27,8 @@
     0 8px 24px rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(14px);
 
-  color: #C7A0FF; /* matches nav-bar-item */
-  /* font-size: 0.60rem; */
+  color: #C7A0FF;
+  font-family: var(--font-body);
   letter-spacing: 0.10em;
   text-transform: uppercase;
 

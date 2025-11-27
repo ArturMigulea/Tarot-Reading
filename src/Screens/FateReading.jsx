@@ -2,7 +2,15 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import { auth, db } from "../firebase";
-import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  orderBy,
+  limit,
+  getDocs,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 import MultiUseButton from "../Components/MultiUseButton";
 import './FateReading.css';
@@ -107,10 +115,14 @@ function FateReading() {
             // Build cardsForApi
             const cardsForApi = randomCards.map(shortName => {
                 const card = data.cards.find(c => c.name_short === shortName);
-                return { name: card?.name || shortName, reversed: false };
+                return {
+                shortName,
+                name: card?.name || shortName,
+                reversed: false,
+                };
             });
 
-            // Call API
+            // Call your tarot API
             const res = await fetch("/api/tarot", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -121,15 +133,32 @@ function FateReading() {
                 }),
             });
 
-            // Handle response
             if (!res.ok) {
                 const errData = await res.json().catch(() => ({}));
                 throw new Error(errData.details || errData.error || "Request failed");
             }
 
             const dataJson = await res.json();
-            setReading(dataJson.interpretation || "");
+            const interpretation = dataJson.interpretation || "";
+
+            setReading(interpretation);
             setHasRequestedReading(true);
+
+            if (user) {
+                try {
+                await addDoc(
+                    collection(db, "users", user.uid, "QuestionHistory"),
+                    {
+                    question: effectiveQuestion,
+                    cards: cardsForApi,       // array of 1 or 3 cards
+                    interpretation,           // ChatGPT's text
+                    createdAt: serverTimestamp(),
+                    }
+                );
+                } catch (saveErr) {
+                console.error("Failed to save QuestionHistory:", saveErr);
+                }
+            }
 
             } catch (err) {
             console.error(err);
