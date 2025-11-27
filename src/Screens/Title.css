@@ -21,7 +21,7 @@
   display: flex;                /* flex allows easy centering */
   justify-content: center;      /* horizontal center */
   width: 100%;                  /* full width of page */
-  margin-top: 7.25rem;            /* experiment with this to set vertical height */
+  margin-top: 4.50rem;            /* experiment with this to set vertical height */
   /* or use padding-top/top if you prefer absolute positioning */
 }
 
